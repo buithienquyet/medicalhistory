@@ -11,8 +11,6 @@ import com.eighteengroup.medicalhistory.dao.*;
  */
 public class TestMD5 {
     public static void main(String[] args) {
-        DoctorDAO doctorDAO=new DoctorDAO();
-        doctorDAO.getDoctorById(1);
     }
     
 }
