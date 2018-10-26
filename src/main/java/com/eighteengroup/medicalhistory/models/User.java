@@ -30,5 +30,7 @@ public class User {
     public void setRoles(ArrayList<String> roles) {
         this.roles = roles;
     }
-    
+    public void exist(){
+        
+    }
 }
