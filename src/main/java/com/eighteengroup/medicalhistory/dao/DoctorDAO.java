@@ -36,7 +36,7 @@ public class DoctorDAO {
                 String faculty = resultSet.getString("doctor_faculty");
                 long loginCount=resultSet.getLong("doctor_loginCount");
                 String lastLogin=resultSet.getString("doctor_lastLogin");
-                preparedStatement.setInt(1, id);
+                preparedStatement.setLong(1, id);
                 doc.setUserName(name);
                 doc.setAddress(address);
                 doc.setBirthday(birthday);
@@ -98,7 +98,8 @@ public class DoctorDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "update tbl_doctor set doctor_name=?, doctor_birthday=?, doctor_department=?, doctor_position=?, doctor_createddate=?, doctor_updateddate=? where doctor_id=?";
+            String sql = "update tbl_doctor set doctor_name=?, doctor_birthday=?, doctor_address=?, doctor_phoneNumber=?, doctor_createdDate=?, doctor_updatedDate=?,"
+                    + "doctor_jobTitle=?, doctor_faculty=?, doctor_loginCount=?, doctor_lastLogin=? where doctor_id=?";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, doc.getUserName());
             preparedStatement.setString(2, doc.getAddress());

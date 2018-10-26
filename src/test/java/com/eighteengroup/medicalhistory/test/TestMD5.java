@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package com.eighteengroup.medicalhistory.test;
-
+import com.eighteengroup.medicalhistory.dao.*;
 /**
  *
  * @author Admin
  */
 public class TestMD5 {
+    public static void main(String[] args) {
+        DoctorDAO doctorDAO=new DoctorDAO();
+        doctorDAO.getDoctorById(1);
+    }
     
 }
