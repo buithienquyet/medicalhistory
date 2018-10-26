@@ -12,7 +12,7 @@ public class LaboratoryResultsBlood {
     private String laboratoryresultsbloodSex;
     private String laboratoryresultsbloodDepartment;
     private String laboratoryresultsbloodDiagnose;
-    private String laboratoryresultsbloodUrê;
+    private String laboratoryresultsbloodUre;
     private String laboratoryresultsbloodGlucose;
     private String laboratoryresultsbloodCreatinin;
     private String laboratoryresultsbloodAcidUric;
@@ -34,7 +34,7 @@ public class LaboratoryResultsBlood {
     private String laboratoryresultsbloodCalci;
     private String laboratoryresultsbloodCalciIonHoa;
     private String laboratoryresultsbloodFe;
-    private String laboratoryresultsbloodMagiê;
+    private String laboratoryresultsbloodMagie;
     private String laboratoryresultsbloodAST;
     private String laboratoryresultsbloodAmylase;
     private String laboratoryresultsbloodCK;
@@ -100,12 +100,12 @@ public class LaboratoryResultsBlood {
         this.laboratoryresultsbloodDiagnose = laboratoryresultsbloodDiagnose;
     }
 
-    public String getLaboratoryresultsbloodUrê() {
-        return laboratoryresultsbloodUrê;
+    public String getLaboratoryresultsbloodUre() {
+        return laboratoryresultsbloodUre;
     }
 
-    public void setLaboratoryresultsbloodUrê(String laboratoryresultsbloodUrê) {
-        this.laboratoryresultsbloodUrê = laboratoryresultsbloodUrê;
+    public void setLaboratoryresultsbloodUre(String laboratoryresultsbloodUre) {
+        this.laboratoryresultsbloodUre = laboratoryresultsbloodUre;
     }
 
     public String getLaboratoryresultsbloodGlucose() {
@@ -276,12 +276,12 @@ public class LaboratoryResultsBlood {
         this.laboratoryresultsbloodFe = laboratoryresultsbloodFe;
     }
 
-    public String getLaboratoryresultsbloodMagiê() {
-        return laboratoryresultsbloodMagiê;
+    public String getLaboratoryresultsbloodMagie() {
+        return laboratoryresultsbloodMagie;
     }
 
-    public void setLaboratoryresultsbloodMagiê(String laboratoryresultsbloodMagiê) {
-        this.laboratoryresultsbloodMagiê = laboratoryresultsbloodMagiê;
+    public void setLaboratoryresultsbloodMagie(String laboratoryresultsbloodMagie) {
+        this.laboratoryresultsbloodMagie = laboratoryresultsbloodMagie;
     }
 
     public String getLaboratoryresultsbloodAST() {

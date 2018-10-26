@@ -2,7 +2,6 @@
 package com.eighteengroup.medicalhistory.dao;
 import com.eighteengroup.medicalhistory.models.LaboratoryResultsBlood;
 import com.eighteengroup.medicalhistory.models.Registration;
-import com.sun.xml.internal.ws.message.stream.StreamAttachment;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +32,7 @@ public class LaboratoryResultsBloodDAO {
                 String sex = resultSet.getString("laboratoryresultsblood_sex");
                 String department = resultSet.getString("laboratoryresultsblood_department");
                 String diagnose = resultSet.getString("laboratoryresultsblood_diagnose");
-                String ure = resultSet.getString("laboratoryresultsblood_Urê");
+                String ure = resultSet.getString("laboratoryresultsblood_Ure");
                 String glucose = resultSet.getString("laboratoryresultsblood_Glucose");
                 String creatinin = resultSet.getString("laboratoryresultsblood_Creatinin");
                 String acidUric = resultSet.getString("laboratoryresultsblood_AcidUric");
@@ -55,7 +54,7 @@ public class LaboratoryResultsBloodDAO {
                 String Calci = resultSet.getString("laboratoryresultsblood_Calci");
                 String CalciIonHoa = resultSet.getString("laboratoryresultsblood_CalciIonHoa");
                 String Fe = resultSet.getString("laboratoryresultsblood_Fe");
-                String Magiê = resultSet.getString("laboratoryresultsblood_Magiê");
+                String Magie = resultSet.getString("laboratoryresultsblood_Magie");
                 String AST = resultSet.getString("laboratoryresultsblood_AST");
                 String Amylase = resultSet.getString("laboratoryresultsblood_Amylase");
                 String CK = resultSet.getString("laboratoryresultsblood_CK");
@@ -77,7 +76,7 @@ public class LaboratoryResultsBloodDAO {
                 lab.setLaboratoryresultsbloodAddress(address);
                 lab.setLaboratoryresultsbloodDepartment(department);
                 lab.setLaboratoryresultsbloodDiagnose(diagnose);
-                lab.setLaboratoryresultsbloodUrê(ure);
+                lab.setLaboratoryresultsbloodUre(ure);
                 lab.setLaboratoryresultsbloodGlucose(glucose);
                 lab.setLaboratoryresultsbloodCreatinin(creatinin);
                 lab.setLaboratoryresultsbloodAcidUric(acidUric);
@@ -99,7 +98,7 @@ public class LaboratoryResultsBloodDAO {
                 lab.setLaboratoryresultsbloodCalci(Calci);
                 lab.setLaboratoryresultsbloodCalciIonHoa(CalciIonHoa);
                 lab.setLaboratoryresultsbloodFe(Fe);
-                lab.setLaboratoryresultsbloodMagiê(Magiê);
+                lab.setLaboratoryresultsbloodMagie(Magie);
                 lab.setLaboratoryresultsbloodAST(AST);
                 lab.setLaboratoryresultsbloodAmylase(Amylase);
                 lab.setLaboratoryresultsbloodCK(CK);
@@ -138,7 +137,7 @@ public class LaboratoryResultsBloodDAO {
             preparedStatement.setString(4, lab.getLaboratoryresultsbloodSex());
             preparedStatement.setString(5, lab.getLaboratoryresultsbloodDepartment());
             preparedStatement.setString(6, lab.getLaboratoryresultsbloodDiagnose());
-            preparedStatement.setString(7, lab.getLaboratoryresultsbloodUrê());
+            preparedStatement.setString(7, lab.getLaboratoryresultsbloodUre());
             preparedStatement.setString(8, lab.getLaboratoryresultsbloodGlucose());
             preparedStatement.setString(9, lab.getLaboratoryresultsbloodCreatinin());
             preparedStatement.setString(10, lab.getLaboratoryresultsbloodAcidUric());
@@ -160,7 +159,7 @@ public class LaboratoryResultsBloodDAO {
             preparedStatement.setString(26, lab.getLaboratoryresultsbloodCalci());
             preparedStatement.setString(27, lab.getLaboratoryresultsbloodCalciIonHoa());
             preparedStatement.setString(28, lab.getLaboratoryresultsbloodFe());
-            preparedStatement.setString(29, lab.getLaboratoryresultsbloodMagiê());
+            preparedStatement.setString(29, lab.getLaboratoryresultsbloodMagie());
             preparedStatement.setString(30, lab.getLaboratoryresultsbloodAST());
             preparedStatement.setString(31, lab.getLaboratoryresultsbloodAmylase());
             preparedStatement.setString(32, lab.getLaboratoryresultsbloodCK());
@@ -203,10 +202,10 @@ public class LaboratoryResultsBloodDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "update tbl_laboratoryresultsblood set laboratoryresultsblood_namepatient=?,laboratoryresultsblood_address=?,laboratoryresultsblood_sex=?,laboratoryresultsblood_department=?,laboratoryresultsblood_diagnose=?,laboratoryresultsblood_Urê=?,"
+            String sql = "update tbl_laboratoryresultsblood set laboratoryresultsblood_namepatient=?,laboratoryresultsblood_address=?,laboratoryresultsblood_sex=?,laboratoryresultsblood_department=?,laboratoryresultsblood_diagnose=?,laboratoryresultsblood_Ure=?,"
                     + "laboratoryresultsblood_Glucose=?,laboratoryresultsblood_Creatinin=?,laboratoryresultsblood_AcidUric=?,laboratoryresultsblood_BilirubinTP=?,laboratoryresultsblood_BilirubinTT=?,laboratoryresultsblood_BilirubinGT=?,laboratoryresultsblood_ProteinTP=?,"
                     + "laboratoryresultsblood_Albumin=?,laboratoryresultsblood_Globulin=?,laboratoryresultsblood_ratioAG=?,laboratoryresultsblood_Fibrinogen=?,laboratoryresultsblood_Cholesterol=?,laboratoryresultsblood_Triglycerid=?,laboratoryresultsblood_HDLcho=?,"
-                    + "laboratoryresultsblood_LDLcho=?,laboratoryresultsblood_Na=?,laboratoryresultsblood_K=?,laboratoryresultsblood_Cl=?,laboratoryresultsblood_Calci=?,laboratoryresultsblood_CalciIonHoa=?,laboratoryresultsblood_Fe=?,laboratoryresultsblood_Magiê=?"
+                    + "laboratoryresultsblood_LDLcho=?,laboratoryresultsblood_Na=?,laboratoryresultsblood_K=?,laboratoryresultsblood_Cl=?,laboratoryresultsblood_Calci=?,laboratoryresultsblood_CalciIonHoa=?,laboratoryresultsblood_Fe=?,laboratoryresultsblood_Magie=?"
                     + "laboratoryresultsblood_AST=?,laboratoryresultsblood_Amylase=?,laboratoryresultsblood_CK=?,laboratoryresultsblood_CKMB=?,laboratoryresultsblood_LDH=?,laboratoryresultsblood_GGT=?,laboratoryresultsblood_Cholinesterase=?,laboratoryresultsblood_Phosphatasekiem=?,"
                     + "laboratoryresultsblood_pHartery=?,laboratoryresultsblood_pCO2=?,laboratoryresultsblood_pO2artery=?,laboratoryresultsblood_HCO3standard=?,laboratoryresultsblood_Kiemdu=?,laboratoryresultsblood_createddate=?,laboratoryresultsblood_attendingdoctor=?,laboratoryresultsblood_analysisdepartmenthead=? where laboratoryresultsblood_id=?";
             preparedStatement = con.prepareStatement(sql);
@@ -215,7 +214,7 @@ public class LaboratoryResultsBloodDAO {
             preparedStatement.setString(3, lab.getLaboratoryresultsbloodSex());
             preparedStatement.setString(4, lab.getLaboratoryresultsbloodDepartment());
             preparedStatement.setString(5, lab.getLaboratoryresultsbloodDiagnose());
-            preparedStatement.setString(6, lab.getLaboratoryresultsbloodUrê());
+            preparedStatement.setString(6, lab.getLaboratoryresultsbloodUre());
             preparedStatement.setString(7, lab.getLaboratoryresultsbloodGlucose());
             preparedStatement.setString(8, lab.getLaboratoryresultsbloodCreatinin());
             preparedStatement.setString(9, lab.getLaboratoryresultsbloodAcidUric());
@@ -237,7 +236,7 @@ public class LaboratoryResultsBloodDAO {
             preparedStatement.setString(25, lab.getLaboratoryresultsbloodCalci());
             preparedStatement.setString(26, lab.getLaboratoryresultsbloodCalciIonHoa());
             preparedStatement.setString(27, lab.getLaboratoryresultsbloodFe());
-            preparedStatement.setString(28, lab.getLaboratoryresultsbloodMagiê());
+            preparedStatement.setString(28, lab.getLaboratoryresultsbloodMagie());
             preparedStatement.setString(29, lab.getLaboratoryresultsbloodAST());
             preparedStatement.setString(30, lab.getLaboratoryresultsbloodAmylase());
             preparedStatement.setString(31, lab.getLaboratoryresultsbloodCK());

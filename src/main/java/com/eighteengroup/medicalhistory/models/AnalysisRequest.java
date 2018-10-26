@@ -5,9 +5,6 @@
  */
 package com.eighteengroup.medicalhistory.models;
 
-import com.sun.xml.internal.ws.message.stream.StreamAttachment;
-import sun.font.StrikeCache;
-
 /**
  *
  * @author Hoa

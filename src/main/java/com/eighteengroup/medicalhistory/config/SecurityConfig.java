@@ -23,7 +23,7 @@ public class SecurityConfig {
         List<String> urlPatterns1 = new ArrayList<String>();
         
         urlPatterns1.add("/patient");
-        urlPatterns1.add("/registrations");
+        urlPatterns1.add("/registrations");  
         urlPatterns1.add("/learning-data");
         urlPatterns1.add("/medical-histories");
  

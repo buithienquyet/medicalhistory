@@ -2,13 +2,17 @@ package com.eighteengroup.medicalhistory.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Registrations", urlPatterns = {"/registrations"})
+@RolesAllowed("ROLE_DOCTOR")
+@WebServlet("/registrations")
+
 public class Registrations extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,6 +28,7 @@ public class Registrations extends HttpServlet {
             out.println("<h1>registrations</h1>");
             out.println("</body>");
             out.println("</html>");
+            out.close();
         }
     }
 }

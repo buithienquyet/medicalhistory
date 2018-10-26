@@ -11,15 +11,8 @@ import com.eighteengroup.medicalhistory.request.UserRoleRequestWrapper;
 import com.eighteengroup.medicalhistory.models.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import java.util.*;
+import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,12 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 public class SecurityFilter implements Filter {
 
     public SecurityFilter() {
-
     }
 
     @Override
     public void destroy() {
-
     }
 
     @Override
@@ -48,11 +39,10 @@ public class SecurityFilter implements Filter {
         // (Sau khi đăng nhập thành công).
         User loginedUser = AppUtils.getLoginedUser(request.getSession());
 
-        if (servletPath.equals("/login.html")) {
+        if (servletPath.equals("/login")) {
             chain.doFilter(request, response);
             return;
         }
-
         HttpServletRequest wrapRequest = request;
 
         if (loginedUser != null) {
@@ -68,38 +58,28 @@ public class SecurityFilter implements Filter {
 
         // Các trang bắt buộc phải đăng nhập.
         if (SecurityUtils.isSecurityPage(request)) {
+
             // Nếu người dùng chưa đăng nhập,
             // Redirect (chuyển hướng) tới trang đăng nhập.
             if (loginedUser == null) {
-                response.sendRedirect(request.getContextPath() + "/login.html");
+                response.sendRedirect("/login.html");
                 return;
             }
 
             // Kiểm tra người dùng có vai trò hợp lệ hay không?
             boolean hasPermission = SecurityUtils.hasPermission(wrapRequest);
             if (!hasPermission) {
-//                RequestDispatcher dispatcher //
-//                        = request.getServletContext().getRequestDispatcher("/WEB-INF/views/accessDeniedView.jsp");
-//
-//                dispatcher.forward(request, response);
+
                 response.setContentType("text/html;charset=UTF-8");
-                try (PrintWriter out = response.getWriter()) {                   
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Deny</title>");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Permission denied</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
+                try (PrintWriter out = response.getWriter()) {
+                    out.println("Permissions denied");
+                    out.close();
                 }
                 return;
             }
         }
 
-        //  chain.doFilter(wrapRequest, response);
-        chain.doFilter(request, response);
+        chain.doFilter(wrapRequest, response);
     }
 
     @Override

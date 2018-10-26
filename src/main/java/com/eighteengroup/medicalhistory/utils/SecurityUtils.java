@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import com.eighteengroup.medicalhistory.config.SecurityConfig;
  
 public class SecurityUtils {
-   // Kiểm tra 'request' này có bắt buộc phải đăng nhập hay không.
+ 
+    // Kiểm tra 'request' này có bắt buộc phải đăng nhập hay không.
     public static boolean isSecurityPage(HttpServletRequest request) {
-        System.out.println("run here");
         String urlPattern = UrlPatternUtils.getUrlPattern(request);
  
         Set<String> roles = SecurityConfig.getAllAppRoles();
