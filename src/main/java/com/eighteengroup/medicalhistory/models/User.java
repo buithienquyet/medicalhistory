@@ -15,8 +15,9 @@ import com.eighteengroup.medicalhistory.utils.*;
  */
 public class User {
 
-    String userName;
-    ArrayList<String> roles;
+    private long id;
+    private String userName;
+    private ArrayList<String> roles;
     private String birthday;
     private String address;
     private String phoneNumber;
@@ -26,6 +27,14 @@ public class User {
     private String password;   
     private long loginCount;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
     public String getAddress() {
         return address;
     }
