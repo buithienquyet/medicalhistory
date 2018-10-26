@@ -13,5 +13,7 @@ import com.eighteengroup.medicalhistory.models.AnalysisRequest;
  */
 public interface AnalysisRequestDAOInterface {
     AnalysisRequest getAnalysisRequestByID(int id);     
-    
+    void insert(AnalysisRequest ana);
+    void delete(int id);
+    void update(AnalysisRequest ana);
 }
