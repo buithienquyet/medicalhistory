@@ -6,6 +6,8 @@
 package com.eighteengroup.medicalhistory.models;
 
 import java.util.*;
+import java.security.NoSuchAlgorithmException;
+import com.eighteengroup.medicalhistory.utils.*;
 
 /**
  *
@@ -21,6 +23,7 @@ public class User {
     private String createdDate;
     private String updatedDate;
     private String lastLogin;
+    private String password;   
     private long loginCount;
 
     public String getAddress() {
@@ -93,6 +96,15 @@ public class User {
 
     public void setRoles(ArrayList<String> roles) {
         this.roles = roles;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) throws NoSuchAlgorithmException {    
+        String md5Pass = MD5.getMD5Hex(password);        
+        this.password = md5Pass;
     }
 
     public void exist() {

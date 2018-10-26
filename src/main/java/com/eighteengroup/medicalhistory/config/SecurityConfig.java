@@ -11,6 +11,7 @@ public class SecurityConfig {
     public static final String ROLE_PATIENT = "PATIENT";
     public static final String ROLE_DOCTOR = "DOCTOR";
     public static final String ROLE_ADMIN = "ADMIN";
+    public static final String myPrivateKey = "btqabc!@#";
  
     private static final HashMap<String, List<String>> mapConfig = new HashMap<String, List<String>>();
  
