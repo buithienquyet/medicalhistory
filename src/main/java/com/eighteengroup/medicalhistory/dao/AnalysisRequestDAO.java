@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  *
  * @author Hoa
  */
-public class AnalysisRequestDAO {
+public class AnalysisRequestDAO implements AnalysisRequestDAOInterface{
 
     public AnalysisRequest getAnalysisRequestByID(int id) {
         try {
