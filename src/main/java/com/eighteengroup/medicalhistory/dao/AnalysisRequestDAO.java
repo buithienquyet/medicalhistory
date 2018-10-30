@@ -26,7 +26,7 @@ public class AnalysisRequestDAO implements AnalysisRequestDAOInterface{
             while (resultSet.next()) {
                 int anaID = resultSet.getInt("analysisrequest_id");
                 String name = resultSet.getString("analysisrequest_name");
-                String department = resultSet.getString("analysisrequest_department");
+                String faculty = resultSet.getString("analysisrequest_faculty");
                 String namePatient = resultSet.getString("analysisrequest_namepatient");
                 String sex = resultSet.getString("analysisrequest_sex");
                 String address = resultSet.getString("analysisrequest_address");
@@ -34,7 +34,7 @@ public class AnalysisRequestDAO implements AnalysisRequestDAOInterface{
                 String updatedDate = resultSet.getString("analysisrequest_updateddate");
                 ana.setAnalysisrequestId(anaID);
                 ana.setAnalysisrequestName(name);
-                ana.setAnalysisrequestDepartment(department);
+                ana.setAnalysisrequesFfaculty(faculty);
                 ana.setAnalysisrequestNamepatient(namePatient);
                 ana.setAnalysisrequestAddress(address);
                 ana.setAnalysisrequestSex(sex);
@@ -59,7 +59,7 @@ public class AnalysisRequestDAO implements AnalysisRequestDAOInterface{
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, ana.getAnalysisrequestId());
             preparedStatement.setString(2, ana.getAnalysisrequestName());
-            preparedStatement.setString(3, ana.getAnalysisrequestDepartment());
+            preparedStatement.setString(3, ana.getAnalysisrequestFaculty());
             preparedStatement.setString(4, ana.getAnalysisrequestNamepatient());
             preparedStatement.setString(5, ana.getAnalysisrequestSex());
             preparedStatement.setString(6, ana.getAnalysisrequestAddress());
@@ -90,11 +90,11 @@ public class AnalysisRequestDAO implements AnalysisRequestDAOInterface{
             con= new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "update tbl_analysisrequest set analysisrequest_name=?, analysisrequest_department=?, analysisrequest_namepatient=?, "
+            String sql = "update tbl_analysisrequest set analysisrequest_name=?, analysisrequest_faculty=?, analysisrequest_namepatient=?, "
                     + "analysisrequest_sex=?, analysisrequest_address=?, analysisrequest_createddate=?, analysisrequest_updateddate=? where analysisrequest_id=?";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, ana.getAnalysisrequestName());
-            preparedStatement.setString(2, ana.getAnalysisrequestDepartment());
+            preparedStatement.setString(2, ana.getAnalysisrequestFaculty());
             preparedStatement.setString(3, ana.getAnalysisrequestNamepatient());
             preparedStatement.setString(4, ana.getAnalysisrequestSex());
             preparedStatement.setString(5, ana.getAnalysisrequestAddress());

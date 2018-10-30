@@ -10,7 +10,7 @@ public class LaboratoryResultsBlood {
     private String laboratoryresultsbloodNamepatient;
     private String laboratoryresultsbloodAddress;
     private String laboratoryresultsbloodSex;
-    private String laboratoryresultsbloodDepartment;
+    private String laboratoryresultsbloodFaculty;
     private String laboratoryresultsbloodDiagnose;
     private String laboratoryresultsbloodUre;
     private String laboratoryresultsbloodGlucose;
@@ -84,12 +84,12 @@ public class LaboratoryResultsBlood {
         this.laboratoryresultsbloodSex = laboratoryresultsbloodSex;
     }
 
-    public String getLaboratoryresultsbloodDepartment() {
-        return laboratoryresultsbloodDepartment;
+    public String getLaboratoryresultsbloodFaculty() {
+        return laboratoryresultsbloodFaculty;
     }
 
-    public void setLaboratoryresultsbloodDepartment(String laboratoryresultsbloodDepartment) {
-        this.laboratoryresultsbloodDepartment = laboratoryresultsbloodDepartment;
+    public void setLaboratoryresultsbloodFaculty(String laboratoryresultsbloodDepartment) {
+        this.laboratoryresultsbloodFaculty = laboratoryresultsbloodDepartment;
     }
 
     public String getLaboratoryresultsbloodDiagnose() {

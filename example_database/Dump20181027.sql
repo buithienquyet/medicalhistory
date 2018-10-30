@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `tbl_analysisrequest`;
 CREATE TABLE `tbl_analysisrequest` (
   `analysisrequest_id` int(11) NOT NULL AUTO_INCREMENT,
   `analysisrequest_name` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `analysisrequest_department` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `analysisrequest_faculty` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `analysisrequest_namepatient` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `analysisrequest_sex` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `analysisrequest_address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `tbl_laboratoryresultsblood` (
   `laboratoryresultsblood_namepatient` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_sex` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `laboratoryresultsblood_department` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `laboratoryresultsblood_faculty` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_diagnose` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_Urê` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_Glucose` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -318,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-26 11:37:25
+-- Dump completed on 2018-10-27  7:34:09

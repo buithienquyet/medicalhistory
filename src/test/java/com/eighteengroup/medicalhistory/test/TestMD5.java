@@ -5,12 +5,15 @@
  */
 package com.eighteengroup.medicalhistory.test;
 import com.eighteengroup.medicalhistory.dao.*;
+import com.eighteengroup.medicalhistory.models.Registration;
 /**
  *
  * @author Admin
  */
 public class TestMD5 {
     public static void main(String[] args) {
-    }
-    
+        RegistrationDAO registrationDAO = new RegistrationDAO();
+        Registration registration=registrationDAO.getRegistrationById(1);
+        System.out.println(registration);
+    }    
 }
