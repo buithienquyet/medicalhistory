@@ -20,11 +20,11 @@ public class AnalysisRequestDAO implements AnalysisRequestDAOInterface{
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "Select * from tbl_analysisrequest where analysisrequest_id=" + id;
+            String sql = "Select * from tbl_analysisrequest where analysisrequest_id=?" ;
             preparedStatement = con.prepareStatement(sql);
             AnalysisRequest ana = new AnalysisRequest();
             while (resultSet.next()) {
-                int anaID = resultSet.getInt("analysisrequest_id");
+                
                 String name = resultSet.getString("analysisrequest_name");
                 String faculty = resultSet.getString("analysisrequest_faculty");
                 String namePatient = resultSet.getString("analysisrequest_namepatient");
@@ -32,7 +32,7 @@ public class AnalysisRequestDAO implements AnalysisRequestDAOInterface{
                 String address = resultSet.getString("analysisrequest_address");
                 String createdDate = resultSet.getString("analysisrequest_createddate");
                 String updatedDate = resultSet.getString("analysisrequest_updateddate");
-                ana.setAnalysisrequestId(anaID);
+                preparedStatement.setInt(1, id);
                 ana.setAnalysisrequestName(name);
                 ana.setAnalysisrequesFfaculty(faculty);
                 ana.setAnalysisrequestNamepatient(namePatient);

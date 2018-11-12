@@ -24,13 +24,12 @@ public class PatientDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from tbl_registation where registation_id=" + id;
+            String sql = "select * from tbl_registation where registation_id=?";
             preparedStatement = con.prepareStatement(sql);
             // Result set get the result of the SQL query
             resultSet = preparedStatement.executeQuery();
             Patient pat= new Patient();
             while (resultSet.next()) {                
-                int patID=resultSet.getInt("patient_id");
                 String name=resultSet.getString("patient_name");
                 String birthday=resultSet.getString("patient_birthday");
                 String phonenumber=resultSet.getString("patient_phonenumber");
@@ -45,7 +44,7 @@ public class PatientDAO {
                 String addressApartmentnumber=resultSet.getString("patient_address_apartmentnumber");
                 String relativePhonenumber=resultSet.getString("patient_relative_phonenumber");
                 String relativeAddress=resultSet.getString("patient_relative_address");
-                pat.setPatientId(patID);
+                preparedStatement.setInt(1, id);
                 pat.setPatientName(name);
                 pat.setPatientBirthday(birthday);
                 pat.setPatientPhonenumber(phonenumber);

@@ -21,17 +21,16 @@ public class MedicamentDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select *from tbl_medicament where medicament_id=" + id;
+            String sql = "select *from tbl_medicament where medicament_id=?" ;
             preparedStatement = con.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             Medicament met = new Medicament();
             while (resultSet.next()) {
-                int metId = resultSet.getInt("medicament_id");
                 String name = resultSet.getString("medicament_name");
                 String createdDate = resultSet.getString("medicament_createddate");
                 String quanlity = resultSet.getString("medicament_quantity");
                 String typeofMedicine = resultSet.getString("medicament_typeofmedicine");
-                met.setMedicamentId(metId);
+                preparedStatement.setInt(1, id);
                 met.setMedicamentName(name);
                 met.setMedicamentCreateddate(createdDate);
                 met.setMedicamentQuantity(quanlity);

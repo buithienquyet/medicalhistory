@@ -22,13 +22,12 @@ public class MedicalHistoryDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from tbl_medicalhistory where medicalhistory_id=" + id;
+            String sql = "select * from tbl_medicalhistory where medicalhistory_id=?";
             preparedStatement = con.prepareStatement(sql);
             // Result set get the result of the SQL query
             resultSet = preparedStatement.executeQuery();
             MedicalHistory med = new MedicalHistory();
             while (resultSet.next()) {                
-                int medid=resultSet.getInt("medicalhistory_id");
                 String createddate=resultSet.getString("medicalhistory_createddate");
                 String updateddate=resultSet.getString("medicalhistory_updateddate");
                 String reason=resultSet.getString("medicalhistory_why");
@@ -79,7 +78,7 @@ public class MedicalHistoryDAO {
                 String dischargestatus=resultSet.getString("medicalhistory_dischargestatus");
                 String treatmentdirectionandregimen=resultSet.getString("medicalhistory_treatmentdirectionandregimen");
                 
-                med.setMedicalhistoryId(medid);
+                preparedStatement.setInt(1, id);
                 med.setMedicalhistoryCreatedDate(createddate);
                 med.setMedicalhistoryUpdatedDate(updateddate);
                 med.setMedicalhistoryReason(reason);

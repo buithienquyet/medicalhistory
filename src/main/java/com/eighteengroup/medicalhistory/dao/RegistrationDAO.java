@@ -17,14 +17,13 @@ public class RegistrationDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from tbl_registation where registation_id= "+id ;
+            String sql = "select * from tbl_registation where registation_id= ?" ;
             preparedStatement = con.prepareStatement(sql);
             // Result set get the result of the SQL query
             resultSet = preparedStatement.executeQuery();
             Registration res = new Registration();  
 
             while (resultSet.next()) {
-                int regId = resultSet.getInt("registation_id");
                 String faculty = resultSet.getString("registation_faculty");
                 String date = resultSet.getString("registation_date");
                 String reason = resultSet.getString("registation_why");              
@@ -32,7 +31,7 @@ public class RegistrationDAO {
                 String pathologicalprocess = resultSet.getString("registation_diseaseprofile");
                 String createdDate=resultSet.getString("registation_createddate");
                 String updatedDate=resultSet.getString("registation_updateddate");
-                res.setRegistationId(regId);
+                preparedStatement.setInt(1, id);
                 res.setRegistationFaculty(faculty);
                 res.setRegistationDate(date);
                 res.setRegistationReason(reason);
