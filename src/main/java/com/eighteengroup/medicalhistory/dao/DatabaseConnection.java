@@ -8,7 +8,7 @@ import java.sql.DriverManager;
  * @author hoa
  */
 public class DatabaseConnection {
-    String conStr = "jdbc:mysql://localhost/medicalrecord?useSSL=false&characterEncoding=utf-8";
+    String conStr = "jdbc:mysql://localhost/medicalhistory?useSSL=false&characterEncoding=utf-8";
     String username = "medicalhistory";
     String password = "abc123!@#";
 

@@ -14,7 +14,7 @@ public class AnalysisRequest {
 
     private int analysisrequestId;
     private String analysisrequestName;
-    private String analysisrequestDepartment;
+    private String analysisrequestfaculty;
     private String analysisrequestNamepatient;
     private String analysisrequestSex;
     private String analysisrequestAddress;
@@ -37,12 +37,12 @@ public class AnalysisRequest {
         this.analysisrequestName = analysisrequestName;
     }
 
-    public String getAnalysisrequestDepartment() {
-        return analysisrequestDepartment;
+    public String getAnalysisrequestFaculty() {
+        return analysisrequestfaculty;
     }
 
-    public void setAnalysisrequestDepartment(String analysisrequestDepartment) {
-        this.analysisrequestDepartment = analysisrequestDepartment;
+    public void setAnalysisrequesFfaculty(String analysisrequestDepartment) {
+        this.analysisrequestfaculty = analysisrequestDepartment;
     }
 
     public String getAnalysisrequestNamepatient() {

@@ -23,18 +23,19 @@ public class SecurityConfig {
 
         List<String> urlPatterns1 = new ArrayList<String>();
         
-        urlPatterns1.add("/patient");
-        urlPatterns1.add("/registrations");  
-        urlPatterns1.add("/learning-data");
-        urlPatterns1.add("/medical-histories");
+        urlPatterns1.add("^/patient$");
+        urlPatterns1.add("^/doctor\\.jsp$");
+        urlPatterns1.add("^/registrations$");  
+//        urlPatterns1.add("/learning-data");
+//        urlPatterns1.add("/medical-histories");
  
         mapConfig.put(ROLE_DOCTOR, urlPatterns1);
         
         List<String> urlPatterns2 = new ArrayList<String>();
                 
-        urlPatterns2.add("/profile");
-        urlPatterns2.add("/my-medical-histories");        
-        urlPatterns2.add("/my-registrations");
+//        urlPatterns2.add("/profile");
+//        urlPatterns2.add("/my-medical-histories");        
+//        urlPatterns2.add("/my-registrations");
  
         mapConfig.put(ROLE_PATIENT, urlPatterns2);
     }

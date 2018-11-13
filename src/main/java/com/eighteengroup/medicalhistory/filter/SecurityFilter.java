@@ -34,15 +34,16 @@ public class SecurityFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
 
         String servletPath = request.getServletPath();
+        System.out.println(request.getPathInfo());
 
         // Thông tin người dùng đã được lưu trong Session
         // (Sau khi đăng nhập thành công).
         User loginedUser = AppUtils.getLoginedUser(request.getSession());
 
-        if (servletPath.equals("/login")) {
-            chain.doFilter(request, response);
-            return;
+        if (loginedUser != null && servletPath.equals("/login.html")) {
+            response.sendRedirect("/");
         }
+                
         HttpServletRequest wrapRequest = request;
 
         if (loginedUser != null) {

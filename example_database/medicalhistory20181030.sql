@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `tbl_analysisrequest`;
 CREATE TABLE `tbl_analysisrequest` (
   `analysisrequest_id` int(11) NOT NULL AUTO_INCREMENT,
   `analysisrequest_name` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `analysisrequest_department` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `analysisrequest_faculty` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `analysisrequest_namepatient` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `analysisrequest_sex` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `analysisrequest_address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -55,19 +55,11 @@ DROP TABLE IF EXISTS `tbl_doctor`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tbl_doctor` (
   `doctor_id` int(11) NOT NULL AUTO_INCREMENT,
-  `doctor_name` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `doctor_birthday` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `doctor_address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `doctor_phoneNumber` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `doctor_createdDate` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `doctor_updatedDate` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `doctor_jobTitle` varchar(100) NOT NULL,
-  `doctor_faculty` varchar(100) NOT NULL,
-  `doctor_loginCount` int(11) NOT NULL,
-  `doctor_lastLogin` varchar(100) NOT NULL,
-  `doctor_role` varchar(100) DEFAULT NULL,
+  `doctor_jobTitle` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `doctor_faculty` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`doctor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +83,7 @@ CREATE TABLE `tbl_laboratoryresultsblood` (
   `laboratoryresultsblood_namepatient` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_address` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_sex` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `laboratoryresultsblood_department` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `laboratoryresultsblood_faculty` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_diagnose` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_Urê` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `laboratoryresultsblood_Glucose` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -308,6 +300,38 @@ LOCK TABLES `tbl_registation` WRITE;
 INSERT INTO `tbl_registation` VALUES (1,'thần kinh','dau bung','2018-01-15 23:26:10','2 năm','3 tuổi bị chó cắn','2016-01-18 23:40:12','2017-02-30 23:39:12'),(2,'thần kinh','đau đầu','2018-01-15 23:26:10','5 năm','5 tuổi bị ngã','2015-03-18 23:40:12','2017-02-30 23:39:12'),(3,'xuong','dau chan','2018-10-14 23:40:32','7 nam','bi nga','2017-02-14 23:38:12','2018-09-14 23:60:22'),(4,'tai mũi họng','viêm xoang','2018-10-20 23:45:40','2 tháng','đau mũi','2015-09-14 23:28:26','2018-11-14 23:26:12'),(5,'tai mũi họng','viêm họng','2018-11-18 23:40:50','2 năm','uống nhiều nước đá và ăn kem','2017-08-14 23:50:12','2018-10-14 23:60:12'),(6,'khoa nội','đau tim','2018-06-18 23:23:35','13 năm','tim bẩm sinh','2017-05-14 23:28:12','2018-09-14 23:10:12'),(7,'tai mũi họng','viêm tai giữa','2018-06-18 23:23:30','4 năm','10 tuổi bị ngã','2016-03-29 23:10:12','2018-10-14 23:10:12'),(8,'khoa nội','đau dạ dày','2018-007-20 23:48:39','1 năm','ănnhiều đồ cay','2017-02-20 23:30:26','2018-08-26 23:10:12'),(9,'khoa nội','viêm gan','2017-08-18 23:40:30','1 năm','3 tuổi bị đau mắt','2018-01-14 23:28:12','2018-09-14 23:10:12'),(10,'khoa nội','viem dạ dày','2018-08-18 23:40:30','5 năm','3 đau dạ dày','2017-05-12 23:28:12','2018-09-25 23:30:30');
 /*!40000 ALTER TABLE `tbl_registation` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_user`
+--
+
+DROP TABLE IF EXISTS `tbl_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `tbl_user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_userName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `user_birthday` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `user_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `user_phoneNumber` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `user_createdDate` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `user_updatedDate` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `user_lastLogin` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `user_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `user_loginCount` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `user_role` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+LOCK TABLES `tbl_user` WRITE;
+/*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -318,4 +342,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-26 11:37:25
+-- Dump completed on 2018-10-30 23:08:45

@@ -111,9 +111,8 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) throws NoSuchAlgorithmException {    
-        String md5Pass = MD5.getMD5Hex(password);        
-        this.password = md5Pass;
+    public void setPassword(String password)  {            
+        this.password = password;
     }
 
     public void exist() {

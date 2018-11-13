@@ -17,7 +17,7 @@ public class RegistrationDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from tbl_registation where registation_id=" + id;
+            String sql = "select * from tbl_registation where registation_id= "+id ;
             preparedStatement = con.prepareStatement(sql);
             // Result set get the result of the SQL query
             resultSet = preparedStatement.executeQuery();
@@ -25,24 +25,26 @@ public class RegistrationDAO {
 
             while (resultSet.next()) {
                 int regId = resultSet.getInt("registation_id");
+                String faculty = resultSet.getString("registation_faculty");
+                String date = resultSet.getString("registation_date");
+                String reason = resultSet.getString("registation_why");              
+                String diseaseprofile = resultSet.getString("registation_diseaseprofile");
+                String pathologicalprocess = resultSet.getString("registation_diseaseprofile");
                 String createdDate=resultSet.getString("registation_createddate");
                 String updatedDate=resultSet.getString("registation_updateddate");
-                String faculty = resultSet.getString("registation_faculty");
-                String reason = resultSet.getString("registation_why");
-                String date = resultSet.getString("registation_date");
-                String pathologicalprocess = resultSet.getString("registation_diseaseprofile");
                 res.setRegistationId(regId);
+                res.setRegistationFaculty(faculty);
+                res.setRegistationDate(date);
+                res.setRegistationReason(reason);
+                res.setRegistationPathologicalprocess(diseaseprofile);
+                res.setRegistationDiseaseprofile(pathologicalprocess);
                 res.setRegistatioCreatedDate(createdDate);
                 res.setRegistationUpdatedDate(updatedDate);
-                res.setRegistationFaculty(faculty);
-                res.setRegistationReason(reason);
-                res.setRegistationPathologicalprocess(pathologicalprocess);
-                res.setRegistationDiseaseprofile(pathologicalprocess);
                 return res;
             }
             
         } catch (Exception e) {
-
+            System.out.println(e.toString());
         }
         return null;
     }
@@ -51,7 +53,7 @@ public class RegistrationDAO {
         try {
             Connection con;
             con = new DatabaseConnection().getConnection();
-            ResultSet resultSet = null;
+            ResultSet resultSet = null;                     
             PreparedStatement preparedStatement = null;
             String sql = "insert into tbl_registation values(?, ?, ?, ?, ?, ?, ?, ?)";
             preparedStatement = con.prepareStatement(sql);

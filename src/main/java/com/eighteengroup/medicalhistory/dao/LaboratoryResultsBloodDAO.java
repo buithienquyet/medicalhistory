@@ -30,7 +30,7 @@ public class LaboratoryResultsBloodDAO {
                 String namepatient = resultSet.getString("laboratoryresultsblood_namepatient");
                 String address = resultSet.getString("laboratoryresultsblood_address");
                 String sex = resultSet.getString("laboratoryresultsblood_sex");
-                String department = resultSet.getString("laboratoryresultsblood_department");
+                String faculty = resultSet.getString("laboratoryresultsblood_faculty");
                 String diagnose = resultSet.getString("laboratoryresultsblood_diagnose");
                 String ure = resultSet.getString("laboratoryresultsblood_Ure");
                 String glucose = resultSet.getString("laboratoryresultsblood_Glucose");
@@ -74,7 +74,7 @@ public class LaboratoryResultsBloodDAO {
                 lab.setLaboratoryresultsbloodId(labId);
                 lab.setLaboratoryresultsbloodNamepatient(namepatient);
                 lab.setLaboratoryresultsbloodAddress(address);
-                lab.setLaboratoryresultsbloodDepartment(department);
+                lab.setLaboratoryresultsbloodFaculty(faculty);
                 lab.setLaboratoryresultsbloodDiagnose(diagnose);
                 lab.setLaboratoryresultsbloodUre(ure);
                 lab.setLaboratoryresultsbloodGlucose(glucose);
@@ -135,7 +135,7 @@ public class LaboratoryResultsBloodDAO {
             preparedStatement.setString(2, lab.getLaboratoryresultsbloodNamepatient());
             preparedStatement.setString(3, lab.getLaboratoryresultsbloodAddress());
             preparedStatement.setString(4, lab.getLaboratoryresultsbloodSex());
-            preparedStatement.setString(5, lab.getLaboratoryresultsbloodDepartment());
+            preparedStatement.setString(5, lab.getLaboratoryresultsbloodFaculty());
             preparedStatement.setString(6, lab.getLaboratoryresultsbloodDiagnose());
             preparedStatement.setString(7, lab.getLaboratoryresultsbloodUre());
             preparedStatement.setString(8, lab.getLaboratoryresultsbloodGlucose());
@@ -202,7 +202,7 @@ public class LaboratoryResultsBloodDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "update tbl_laboratoryresultsblood set laboratoryresultsblood_namepatient=?,laboratoryresultsblood_address=?,laboratoryresultsblood_sex=?,laboratoryresultsblood_department=?,laboratoryresultsblood_diagnose=?,laboratoryresultsblood_Ure=?,"
+            String sql = "update tbl_laboratoryresultsblood set laboratoryresultsblood_namepatient=?,laboratoryresultsblood_address=?,laboratoryresultsblood_sex=?,laboratoryresultsblood_faculty=?,laboratoryresultsblood_diagnose=?,laboratoryresultsblood_Ure=?,"
                     + "laboratoryresultsblood_Glucose=?,laboratoryresultsblood_Creatinin=?,laboratoryresultsblood_AcidUric=?,laboratoryresultsblood_BilirubinTP=?,laboratoryresultsblood_BilirubinTT=?,laboratoryresultsblood_BilirubinGT=?,laboratoryresultsblood_ProteinTP=?,"
                     + "laboratoryresultsblood_Albumin=?,laboratoryresultsblood_Globulin=?,laboratoryresultsblood_ratioAG=?,laboratoryresultsblood_Fibrinogen=?,laboratoryresultsblood_Cholesterol=?,laboratoryresultsblood_Triglycerid=?,laboratoryresultsblood_HDLcho=?,"
                     + "laboratoryresultsblood_LDLcho=?,laboratoryresultsblood_Na=?,laboratoryresultsblood_K=?,laboratoryresultsblood_Cl=?,laboratoryresultsblood_Calci=?,laboratoryresultsblood_CalciIonHoa=?,laboratoryresultsblood_Fe=?,laboratoryresultsblood_Magie=?"
@@ -212,7 +212,7 @@ public class LaboratoryResultsBloodDAO {
             preparedStatement.setString(1, lab.getLaboratoryresultsbloodNamepatient());
             preparedStatement.setString(2, lab.getLaboratoryresultsbloodAddress());
             preparedStatement.setString(3, lab.getLaboratoryresultsbloodSex());
-            preparedStatement.setString(4, lab.getLaboratoryresultsbloodDepartment());
+            preparedStatement.setString(4, lab.getLaboratoryresultsbloodFaculty());
             preparedStatement.setString(5, lab.getLaboratoryresultsbloodDiagnose());
             preparedStatement.setString(6, lab.getLaboratoryresultsbloodUre());
             preparedStatement.setString(7, lab.getLaboratoryresultsbloodGlucose());
