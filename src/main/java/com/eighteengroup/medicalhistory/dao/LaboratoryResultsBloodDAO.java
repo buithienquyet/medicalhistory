@@ -20,13 +20,13 @@ public class LaboratoryResultsBloodDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from tbl_laboratoryresultsblood where laboratoryresultsblood_id=" + id;
+            String sql = "select * from tbl_laboratoryresultsblood where laboratoryresultsblood_id=?";
             preparedStatement = con.prepareStatement(sql);
             // Result set get the result of the SQL query
             resultSet = preparedStatement.executeQuery();
             LaboratoryResultsBlood lab = new LaboratoryResultsBlood();
             while (resultSet.next()) {                
-                int labId = resultSet.getInt("laboratoryresultsblood_id");
+                
                 String namepatient = resultSet.getString("laboratoryresultsblood_namepatient");
                 String address = resultSet.getString("laboratoryresultsblood_address");
                 String sex = resultSet.getString("laboratoryresultsblood_sex");
@@ -71,7 +71,7 @@ public class LaboratoryResultsBloodDAO {
                 String createdDate = resultSet.getString("laboratoryresultsblood_createddate");
                 String attendingdoctor = resultSet.getString("laboratoryresultsblood_attendingdoctor");
                 String analysisdepartmenthead = resultSet.getString("laboratoryresultsblood_analysisdepartmenthead");
-                lab.setLaboratoryresultsbloodId(labId);
+                preparedStatement.setInt(1, id);
                 lab.setLaboratoryresultsbloodNamepatient(namepatient);
                 lab.setLaboratoryresultsbloodAddress(address);
                 lab.setLaboratoryresultsbloodFaculty(faculty);

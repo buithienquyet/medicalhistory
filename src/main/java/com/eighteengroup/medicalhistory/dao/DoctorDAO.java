@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 package com.eighteengroup.medicalhistory.dao;
+
 import com.eighteengroup.medicalhistory.models.Doctor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,7 +18,8 @@ import java.util.logging.Logger;
  * @author Admin
  */
 public class DoctorDAO {
-    public Doctor getDoctorById(int id){
+
+    public Doctor getDoctorById(int id) {
         try {
             Connection con;
             con = new DatabaseConnection().getConnection();
@@ -25,17 +28,24 @@ public class DoctorDAO {
             String sql = "select * from tbl_doctor where doctor_id=?";
             preparedStatement = con.prepareStatement(sql);
             Doctor doc = new Doctor();
-            while (resultSet.next()) { 
-                String name = resultSet.getString("doctor_name");
-                String address = resultSet.getString("doctor_address");
-                String birthday = resultSet.getString("doctor_birthday");
-                String phoneNumber = resultSet.getString("doctor_phoneNumber");
-                String createdDate=resultSet.getString("doctor_createddate");
-                String updateDate = resultSet.getString("doctor_updateddate");
+            while (resultSet.next()) {
+                String name = resultSet.getString("userName");
+                String address = resultSet.getString("address");
+                String birthday = resultSet.getString("birthday");
+                String phoneNumber = resultSet.getString("phoneNumber");
+                String createdDate = resultSet.getString("createdDate");
+                String updateDate = resultSet.getString("updatedDate");
                 String jobTitle = resultSet.getString("doctor_jobTitle");
                 String faculty = resultSet.getString("doctor_faculty");
-                long loginCount=resultSet.getLong("doctor_loginCount");
-                String lastLogin=resultSet.getString("doctor_lastLogin");
+                long loginCount = resultSet.getLong("loginCount");
+                String lastLogin = resultSet.getString("lastLogin");
+                String password = resultSet.getString("password");
+                //String role = resultSet.getString("role");
+
+                ArrayList<String> roles = new ArrayList<String>();
+                roles.add(resultSet.getString("role"));
+                doc.setRoles(roles);
+
                 preparedStatement.setLong(1, id);
                 doc.setUserName(name);
                 doc.setAddress(address);
@@ -47,6 +57,7 @@ public class DoctorDAO {
                 doc.setFaculty(faculty);
                 doc.setLoginCount(loginCount);
                 doc.setLastLogin(lastLogin);
+                doc.setPassword(password);
                 return doc;
             }
         } catch (Exception ex) {
@@ -54,13 +65,14 @@ public class DoctorDAO {
         }
         return null;
     }
-    public void insert(Doctor doc){
+
+    public void insert(Doctor doc) {
         try {
             Connection con;
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "insert into tbl_doctor values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into tbl_doctor values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setLong(1, doc.getId());
             preparedStatement.setString(2, doc.getUserName());
@@ -73,12 +85,14 @@ public class DoctorDAO {
             preparedStatement.setString(9, doc.getFaculty());
             preparedStatement.setLong(10, doc.getLoginCount());
             preparedStatement.setString(11, doc.getLastLogin());
+            preparedStatement.setString(12, doc.getPassword());
             preparedStatement.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(DoctorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void delete(int id){
+
+    public void delete(int id) {
         try {
             Connection con;
             con = new DatabaseConnection().getConnection();
@@ -92,7 +106,8 @@ public class DoctorDAO {
             Logger.getLogger(DoctorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void update(Doctor doc){
+
+    public void update(Doctor doc) {
         try {
             Connection con;
             con = new DatabaseConnection().getConnection();

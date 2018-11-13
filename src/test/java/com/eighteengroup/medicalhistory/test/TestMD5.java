@@ -7,6 +7,8 @@ package com.eighteengroup.medicalhistory.test;
 import com.eighteengroup.medicalhistory.models.User;
 import java.security.NoSuchAlgorithmException;
 
+import com.eighteengroup.medicalhistory.dao.*;
+import com.eighteengroup.medicalhistory.models.Registration;
 /**
  *
  * @author Admin
