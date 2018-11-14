@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `medicalhistory` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `medicalhistory`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: medicalhistory
@@ -320,6 +318,8 @@ CREATE TABLE `tbl_user` (
   `user_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `user_loginCount` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `user_role` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `user_firstname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `user_lastname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -342,4 +342,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-30 23:08:45
+-- Dump completed on 2018-11-14 14:13:29
