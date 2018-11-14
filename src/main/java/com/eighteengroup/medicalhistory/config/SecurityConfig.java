@@ -25,7 +25,7 @@ public class SecurityConfig {
         
         urlPatterns1.add("^/patient$");
         urlPatterns1.add("^/doctor\\.jsp$");
-        urlPatterns1.add("^/registrations$");  
+  //      urlPatterns1.add("^/registrations$");  
 //        urlPatterns1.add("/learning-data");
 //        urlPatterns1.add("/medical-histories");
  
