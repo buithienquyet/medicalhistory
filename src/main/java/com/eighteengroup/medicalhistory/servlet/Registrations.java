@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.eighteengroup.medicalhistory.utils.*;
 
 @RolesAllowed("ROLE_DOCTOR")
 @WebServlet("/registrations")
@@ -36,6 +37,7 @@ public class Registrations extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String currentDate = AppUtils.getCurrentDate();
         String faculty = request.getParameter("faculty");
         System.out.println(faculty);
         String reason = request.getParameter("reason");
@@ -51,16 +53,12 @@ public class Registrations extends HttpServlet {
         RegistrationDAO registrationDAO = new RegistrationDAO();
         Registration registration=new Registration();
         registration.setRegistationFaculty(faculty);
-        System.out.println("in");
-        System.out.println(registration.getRegistationFaculty());
-        registration.setRegistationReason("dau ta trang");
-        System.out.println(registration.getRegistationReason());
-        registration.setRegistationDate("2018");
-        System.out.println(registration.getRegistationDate());
+        registration.setRegistationReason(reason);
+        registration.setRegistationDate(date);
         registration.setRegistationPathologicalprocess(pathologicalProcess);
         registration.setRegistationDiseaseprofile(story);
-        registration.setRegistatioCreatedDate("2017");
-        registration.setRegistationUpdatedDate("2018");
+        registration.setRegistatioCreatedDate(currentDate);
+        registration.setRegistationUpdatedDate(currentDate);
         registrationDAO.insert(registration);
         
         
