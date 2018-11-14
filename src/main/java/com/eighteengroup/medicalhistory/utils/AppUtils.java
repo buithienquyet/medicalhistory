@@ -27,9 +27,9 @@ public class AppUtils {
     
     public static String getCurrentDate()
     {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	Calendar cal = Calendar.getInstance();
-	return dateFormat.format(cal);     
+       DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
+	return dateFormat.format(date);
     }        
   
 }
