@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RolesAllowed("ROLE_DOCTOR")
 @WebServlet("/registrations")
 
 public class Registrations extends HttpServlet {

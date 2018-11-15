@@ -1,4 +1,10 @@
 <%@page import="com.eighteengroup.medicalhistory.models.User"%>
+
+<%
+    User user = (User)session.getAttribute("loginedUser");
+    String fullName = user.getLastName()+" "+ user.getFirstName();
+    String userName = user.getUserName();
+ %>
 <header class="main-header">
     <!-- Logo -->
     <a href="#" class="logo">
@@ -22,16 +28,15 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs"> <%=((User)session.getAttribute("loginedUser")).getUserName()%> </span>
+                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="">
+                        <span class="hidden-xs"> <%=fullName%> </span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                            <p>
-                                <%=((User)session.getAttribute("loginedUser")).getUserName()%>
-                                <small>Bác sĩ</small>
+                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="">
+                            <p style="color : black">
+                                <%=userName%>                                
                             </p>
                         </li>
 
@@ -41,7 +46,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Hồ sơ</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Đăng xuất</a>
+                                <a href="/logout" class="btn btn-default btn-flat">Đăng xuất</a>
                             </div>
                         </li>
                     </ul>

@@ -31,8 +31,8 @@ public class Login extends HttpServlet {
             UserDAOInterface userDAO = new UserDAO();
 
             String md5Pass = MD5.getMD5Hex(password);
-            user = userDAO.getUser(username, md5Pass);                                    
-                                   
+            user = userDAO.getUser(username, md5Pass);
+
         } catch (Exception e) {
             user = null;
         }
@@ -41,25 +41,29 @@ public class Login extends HttpServlet {
             response.sendRedirect("/login.html");
         } else {
             AppUtils.storeLoginedUser(request.getSession(), user);
-            for (int i=0;i<user.getRoles().size();i++)
-            {
-                switch (user.getRoles().get(i))
-                {
-                    case "DOCTOR": 
-                    {
+            for (int i = 0; i < user.getRoles().size(); i++) {
+                switch (user.getRoles().get(i)) {
+                    case "DOCTOR": {
                         response.sendRedirect("/doctor.jsp");
                         break;
                     }
-                    default: {response.sendRedirect("/error.html");}
+
+                    case "PATIENT": {
+                        response.sendRedirect("/patient.jsp");
+                        break;
+                    }
+                    default: {
+                        response.sendRedirect("/error.html");
+                    }
                 }
             }
-            
+
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {        
+            throws ServletException, IOException {
         response.sendRedirect("/login.html");
     }
 }

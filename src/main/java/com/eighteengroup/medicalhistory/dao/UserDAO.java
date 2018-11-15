@@ -27,41 +27,42 @@ public class UserDAO implements UserDAOInterface {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from tbl_Doctor where username=? and password =?";
+            String sql = "select * from tbl_User where user_userName=? and user_password =?";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();            
+            resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 user = new User();
-                long id = resultSet.getLong("id");
-                String name = resultSet.getString("username");
-                String dbRoles = resultSet.getString("roles");
+                long id = resultSet.getLong("user_id");
+                String name = resultSet.getString("user_userName");
+                String dbRoles = resultSet.getString("user_role");
                 ArrayList<String> roles = new ArrayList<String>();
-                for(String item : dbRoles.split(","))
-                {
+                for (String item : dbRoles.split(",")) {
                     roles.add(item);
                 }
                 user.setRoles(roles);
-//                String password = resultSet.getString("password");
-//                String address = resultSet.getString("doctor_address");
-//                String birthday = resultSet.getString("doctor_birthday");
-//                String phoneNumber = resultSet.getString("doctor_phoneNumber");
-//                String createdDate=resultSet.getString("doctor_createddate");
-//                String updateDate = resultSet.getString("doctor_updateddate");
-//                String jobTitle = resultSet.getString("doctor_jobTitle");
-//                String faculty = resultSet.getString("doctor_faculty");
+                String address = resultSet.getString("user_address");
+                String birthday = resultSet.getString("user_birthday");
+                String phoneNumber = resultSet.getString("user_phoneNumber");
+                String createdDate = resultSet.getString("user_createddate");
+                String updateDate = resultSet.getString("user_updateddate");
+                String firstName = resultSet.getString("user_firstname");
+                String lastName = resultSet.getString("user_lastname");
+//                String jobTitle = resultSet.getString("user_jobTitle");
+//                String faculty = resultSet.getString("user_faculty");
 //                long loginCount = resultSet.getLong("doctor_loginCount");
 //                String lastLogin=resultSet.getString("doctor_lastLogin");
-                user.setUserName(name);               
-//                user.setPassword();
-//                user.setAddress(address);
-//                user.setBirthday(birthday);
-//                user.setPhoneNumber(phoneNumber);
-//                user.setCreatedDate(createdDate);
-//                user.setUpdatedDate(updateDate);
-//                user.setLoginCount(loginCount);
-//                user.setLastLogin(lastLogin);
+                user.setUserName(name);
+                user.setPassword(password);
+                user.setAddress(address);
+                user.setBirthday(birthday);
+                user.setPhoneNumber(phoneNumber);
+                user.setCreatedDate(createdDate);
+                user.setUpdatedDate(updateDate);
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                
                 return user;
             }
             return null;

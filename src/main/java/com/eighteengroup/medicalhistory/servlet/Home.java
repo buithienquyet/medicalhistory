@@ -33,6 +33,10 @@ public class Home extends HttpServlet {
                         response.sendRedirect("/doctor.jsp");
                         break;
                     }
+                    case "PATIENT": {
+                        response.sendRedirect("/patient.jsp");
+                        break;
+                    }
                     default: {
                         response.sendRedirect("/error.html");
                     }

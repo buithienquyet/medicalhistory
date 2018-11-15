@@ -35,7 +35,7 @@ public class SecurityConfig {
                 
 //        urlPatterns2.add("/profile");
 //        urlPatterns2.add("/my-medical-histories");        
-//        urlPatterns2.add("/my-registrations");
+        urlPatterns2.add("^/patient\\.jsp$");          
  
         mapConfig.put(ROLE_PATIENT, urlPatterns2);
     }
