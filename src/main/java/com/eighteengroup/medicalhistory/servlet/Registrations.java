@@ -36,7 +36,11 @@ public class Registrations extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String currentDate = AppUtils.getCurrentDate();
+        
+        
+         String message ="";
+        try {
+           String currentDate = AppUtils.getCurrentDate();
         String faculty = request.getParameter("faculty");
         System.out.println(faculty);
         String reason = request.getParameter("reason");
@@ -59,12 +63,15 @@ public class Registrations extends HttpServlet {
         registration.setRegistatioCreatedDate(currentDate);
         registration.setRegistationUpdatedDate(currentDate);
         registrationDAO.insert(registration);
-        
-        
+        message ="ok";
+        System.out.println("Đăng ký thành công");
+        } catch (Exception e) {
+            message ="error";
+        }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.print("ok");           
+            out.print(message);           
             out.close();
         }
         
