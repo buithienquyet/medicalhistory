@@ -239,6 +239,7 @@
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- Page script -->
+        <script src="dist/js/registry.js"></script>
         <script>
             $(function () {
                 //Initialize Select2 Elements
@@ -313,33 +314,7 @@
                 })
             })
 
-            $("#btnRegistry").click(function () {
-                let faculty = $("#txtFaculty").val();
-                console.log(faculty);
-                let reason = $("#txtReason").val();
-                console.log(reason);
-                let date = $("#txtDate").val();
-                console.log(date);
-                let pathologicalProcess = $("#txtPathologicalProcess").val();
-                console.log(pathologicalProcess);
-                let story = $("#txtStory").val();
-                console.log(story);
-                $.ajax({
-                    type: "POST",
-                    url: "/registrations",
-                    dataType: "json",
-                    data: {faculty: faculty, reason: reason, date: date, pathologicalProcess: pathologicalProcess, story: story},
-                    success: function (msg) {
-                        if (msg) {
-                            alert("Somebody" + name + " was added in list !");
-                            location.reload(true);
-                        } else {
-                            alert("Cannot add to list !");
-                        }
-                    },
-
-                });
-            });
+           
 
 
         </script>

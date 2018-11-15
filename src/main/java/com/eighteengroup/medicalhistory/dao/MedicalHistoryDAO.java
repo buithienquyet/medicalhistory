@@ -30,7 +30,7 @@ public class MedicalHistoryDAO {
             while (resultSet.next()) {                
                 String createddate=resultSet.getString("medicalhistory_createddate");
                 String updateddate=resultSet.getString("medicalhistory_updateddate");
-                String reason=resultSet.getString("medicalhistory_why");
+                String reason=resultSet.getString("medicalhistory_reason");
                 String date=resultSet.getString("medicalhistory_date");
                 String pathlogicalprocess=resultSet.getString("medicalhistory_pathlogicalprocess");
                 String diseaseprofile=resultSet.getString("medicalhistory_diseaseprofile");
@@ -142,7 +142,7 @@ public class MedicalHistoryDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "insert into tbl_registation values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into tbl_medicalhistory values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, med.getMedicalhistoryId());
             preparedStatement.setString(2, med.getMedicalhistoryCreatedDate());
@@ -220,7 +220,7 @@ public class MedicalHistoryDAO {
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "update tbl_registation set medicalhistory_createddate=?,medicalhistory_updateddate=?,medicalhistory_why=?,medicalhistory_date=?,medicalhistory_pathlogicalprocess=?,medicalhistory_diseaseprofile=?,"
+            String sql = "update tbl_registation set medicalhistory_createddate=?,medicalhistory_updateddate=?,medicalhistory_reason=?,medicalhistory_date=?,medicalhistory_pathlogicalprocess=?,medicalhistory_diseaseprofile=?,"
                     + "medicalhistory_body_spiritofthesick=?,medicalhistory_body_millionhemorrhage=?,medicalhistory_body_style=?,medicalhistory_body_systemhair=?,medicalhistory_body_skin=?,medicalhistory_body_Thyroid=?,"
                     + "medicalhistory_organization_liver_location=?,medicalhistory_organization_liver_size=?, medicalhistory_organization_liver_density=?, medicalhistory_organization_liver_bo=?, medicalhistory_organization_liver_matgan=?, "
                     + "medicalhistory_organization_liver_pain=?, medicalhistory_organization_spleen_location=?, medicalhistory_organization_spleen_size=?, medicalhistory_organization_spleen_density=?, medicalhistory_organization_spleen_edge=?, "
