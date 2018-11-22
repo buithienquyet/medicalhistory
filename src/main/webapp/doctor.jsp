@@ -8,21 +8,20 @@
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> <span>Quản lý hồ sơ bệnh án</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a style="border:none; background-color: #CCCCCC; color:black" href="./pages/quan-ly-benh-an-danh-sach-hang-doi.html"><i class="fa fa-circle-o"></i> Danh sách bệnh án</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
+                <section class="sidebar" style="height: auto;">
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li>
+                        <a href="./pages/lich-su-benh-an.html">
+                            <span>Yêu cầu khám bệnh</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal">
+                            <span>Danh sách bệnh án</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
                 <!-- /.sidebar -->
             </aside>
 
@@ -35,12 +34,7 @@
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
-            <footer class="main-footer">
-                <div class="pull-right hidden-xs">
-                    <b>Version</b> 2.4.0
-                </div>
-                <strong>Bệnh viện điện tử</strong>
-            </footer>
+            <%@include file="./partial/footer.jsp"%>
 
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
