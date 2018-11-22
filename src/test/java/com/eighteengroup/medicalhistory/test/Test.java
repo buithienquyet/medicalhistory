@@ -7,14 +7,14 @@ package com.eighteengroup.medicalhistory.test;
 import com.eighteengroup.medicalhistory.dao.*;
 import com.eighteengroup.medicalhistory.models.*;
 /**
- *
+ * 
  * @author Admin
  */
 public class Test {
     public static void main(String[] args) {
         MedicalHistoryDAO medicalHistoryDAO=new MedicalHistoryDAO();
-        MedicalHistory medicalHistory=new MedicalHistory();
-        medicalHistory.setMedicalhistoryCreatedDate("18/01/2018");
+        //MedicalHistory medicalHistory=new MedicalHistory();
+        /*medicalHistory.setMedicalhistoryCreatedDate("18/01/2018");
         medicalHistory.setMedicalhistoryUpdatedDate("20/08/2018");
         medicalHistory.setMedicalhistoryReason("dau dau");
         medicalHistory.setMedicalhistoryDate("12/05/2018");
@@ -63,11 +63,10 @@ public class Test {
         medicalHistory.setMedicalhistoryTreatments("");
         medicalHistory.setMedicalhistoryDischargestatus("");
         medicalHistory.setMedicalhistoryTreatmentdirectionandregimen("");
-        medicalHistoryDAO.insert(medicalHistory);
+        medicalHistoryDAO.insert(medicalHistory);*/
         
-        //medicalHistory.setMedicalhistoryId(2);
-        //medicalHistoryDAO.delete(2);
-
+       
+        medicalHistoryDAO.delete(2);
         
         
     }

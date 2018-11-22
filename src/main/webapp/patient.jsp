@@ -45,7 +45,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>1.  Khoa</label>
-                                            <select class="form-control" name="sltKhoa">
+                                            <select class="form-control" id="txtFaculty" name="sltKhoa">
                                                     <option>Thần kinh</option>
                                                     <option>Khoa nội</option>
                                                     <option>Tai, mũi, họng</option>
@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <label>2.  Lý do vào viện</label>
 
-                                            <input class="form-control" type="text" name="txtLyDoVaoVien" placeholder="Đau lưng">
+                                            <input class="form-control" type="text" id="txtReason" name="txtLyDoVaoVien" placeholder="Đau lưng">
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
@@ -70,7 +70,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control pull-right" id="datepicker">
+                                                <input type="text"  class="form-control pull-right" id="txtDate">
                                             </div>
                                         </div>
                                     </div>
@@ -81,14 +81,14 @@
                                         <div class="form-group">
                                             <label>4. Quá trình bệnh lý</label>
                                             <span>(khởi phát, diễn biến, chẩn đoán, điều trị của tuyến dưới v.v...).</span>
-                                            <textarea class="form-control" rows="3" placeholder="Lâu năm ..."></textarea>
+                                            <textarea class="form-control" id="txtPathologicalProcess" rows="3" placeholder="Lâu năm ..."></textarea>
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>5. Tiểu sử bệnh</label>
-                                            <textarea class="form-control" rows="3" placeholder="Bản thân"></textarea>
+                                            <textarea class="form-control" id="txtStory" rows="3" placeholder="Bản thân"></textarea>
                                         </div>
                                         <!-- /.form-group -->
                                     </div>
@@ -97,7 +97,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Đăng ký</button>
+                                <button type="button" id="btnRegistry" class="btn btn-primary">Đăng ký</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                             </div>
                         </div>
@@ -144,6 +144,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
     <!-- Page script -->
+    <script src="/dist/js/registry.js"></script>
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -187,7 +188,7 @@
             )
 
             //Date picker
-            $('#datepicker').datepicker({
+            $('#txtDate').datepicker({
                 autoclose: true
             })
 
