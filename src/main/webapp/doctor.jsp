@@ -11,7 +11,7 @@
                 <section class="sidebar" style="height: auto;">
                 <ul class="sidebar-menu tree" data-widget="tree">
                     <li>
-                        <a href="./pages/lich-su-benh-an.html">
+                        <a href="/doctor-registration-list.jsp">
                             <span>Yêu cầu khám bệnh</span>
                         </a>
                     </li>

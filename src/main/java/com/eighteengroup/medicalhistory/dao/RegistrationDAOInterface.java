@@ -6,6 +6,7 @@
 package com.eighteengroup.medicalhistory.dao;
 
 import com.eighteengroup.medicalhistory.models.Registration;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +15,8 @@ import com.eighteengroup.medicalhistory.models.Registration;
 public interface RegistrationDAOInterface {
 
     Registration getRegistrationById(int id);
+    
+    ArrayList<Registration> getRegistrationsByDate();
 
     void insert(Registration reg);
 
