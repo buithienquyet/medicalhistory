@@ -28,6 +28,7 @@ public class User {
     private String lastLogin;
     private String password;   
     private long loginCount;
+    private int isUserDeleted;
 
     public long getId() {
         return id;
@@ -134,4 +135,13 @@ public class User {
     public void exist() {
 
     }
+
+    public int getIsUserDeleted() {
+        return isUserDeleted;
+    }
+
+    public void setIsUserDeleted(int isUserDeleted) {
+        this.isUserDeleted = isUserDeleted;
+    }
+    
 }

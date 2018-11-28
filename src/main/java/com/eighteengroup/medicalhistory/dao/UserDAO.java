@@ -50,10 +50,6 @@ public class UserDAO implements UserDAOInterface {
                 String updateDate = resultSet.getString("user_updateddate");
                 String firstName = resultSet.getString("user_firstname");
                 String lastName = resultSet.getString("user_lastname");
-//                String jobTitle = resultSet.getString("user_jobTitle");
-//                String faculty = resultSet.getString("user_faculty");
-//                long loginCount = resultSet.getLong("doctor_loginCount");
-//                String lastLogin=resultSet.getString("doctor_lastLogin");
                 user.setUserName(name);
                 user.setPassword(password);
                 user.setAddress(address);
@@ -63,7 +59,7 @@ public class UserDAO implements UserDAOInterface {
                 user.setUpdatedDate(updateDate);
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
-                
+
                 return user;
             }
             return null;
@@ -72,28 +68,29 @@ public class UserDAO implements UserDAOInterface {
             return null;
         }
     }
-     public ArrayList<User> getUser() {
-         try {
+
+    public ArrayList<User> getUser() {
+        try {
             Connection con;
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
             ArrayList<User> list = new ArrayList<>();
-            
+
             String sql = "select * from tbl_user";
-            
+
             preparedStatement = con.prepareStatement(sql);
-            
+
             resultSet = preparedStatement.executeQuery();
-            
-            while (resultSet.next()) { 
-                User user=new User();
-                long id=resultSet.getLong("user_id");
-                String username=resultSet.getString("user_userName");
+
+            while (resultSet.next()) {
+                User user = new User();
+                long id = resultSet.getLong("user_id");
+                String username = resultSet.getString("user_userName");
                 String birthday = resultSet.getString("user_birthday");
                 String address = resultSet.getString("user_address");
                 String phoneNumber = resultSet.getString("user_phoneNumber");
-                String createdDate  = resultSet.getString("user_createdDate");
+                String createdDate = resultSet.getString("user_createdDate");
                 String updatedDate = resultSet.getString("user_updatedDate");
                 String lastLogin = resultSet.getString("user_lastLogin");
                 String password = resultSet.getString("user_password");
@@ -105,7 +102,7 @@ public class UserDAO implements UserDAOInterface {
                 }
                 String firstname = resultSet.getString("user_firstname");
                 String lastname = resultSet.getString("user_lastname");
-                
+                int isUserDeleted = resultSet.getInt("user_isUserDeleted");
                 user.setId(id);
                 user.setUserName(username);
                 user.setBirthday(birthday);
@@ -119,10 +116,9 @@ public class UserDAO implements UserDAOInterface {
                 user.setRoles(roles);
                 user.setFirstName(firstname);
                 user.setLastName(lastname);
-                
-                
+                user.setIsUserDeleted(isUserDeleted);
+
                 //dis.setProvinceName(provinceName);
-                
                 list.add(user);
             }
             return list;
@@ -130,5 +126,56 @@ public class UserDAO implements UserDAOInterface {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void delete(int id) {
+        try {
+            Connection con;
+            con = new DatabaseConnection().getConnection();
+            ResultSet resultSet = null;
+            PreparedStatement preparedStatement = null;
+            ArrayList<User> list = new ArrayList<>();
+
+            String sql = "update tbl_user set user_isUserDeleted=? where user_id=?";
+
+            preparedStatement = con.prepareStatement(sql);
+            User user=new User();
+            preparedStatement.setInt(1, user.getIsUserDeleted());
+            preparedStatement.setLong(2, user.getId());
+            preparedStatement.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void update(User user){
+        try {
+            Connection con;
+            con = new DatabaseConnection().getConnection();
+            ResultSet resultSet = null;
+            PreparedStatement preparedStatement = null;
+            ArrayList<User> list = new ArrayList<>();
+
+            String sql = "update tbl_user set user_userName=?,user_birthday=?,user_address=?,user_phoneNumber=?,"
+                    + "user_createdDate=?,user_updatedDate=?,user_lastLogin=?,user_password=?,user_loginCount=?,"
+                    + "user_role=?,user_firstname=?,user_lastname=?,user_isUserDeleted=? where user_id=?";
+            preparedStatement=con.prepareStatement(sql);
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getBirthday());
+            preparedStatement.setString(3, user.getAddress());
+            preparedStatement.setString(4, user.getPhoneNumber());
+            preparedStatement.setString(5, user.getCreatedDate());
+            preparedStatement.setString(6, user.getUpdatedDate());
+            preparedStatement.setString(7, user.getLastLogin());
+            preparedStatement.setString(8, user.getPassword());
+            
+            //preparedStatement.setString(1, user.getRoles());
+            preparedStatement.setLong(9, user.getLoginCount());
+            preparedStatement.setString(10, user.getFirstName());
+            preparedStatement.setString(11, user.getLastName());
+            preparedStatement.setInt(12, user.getIsUserDeleted());
+            preparedStatement.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
