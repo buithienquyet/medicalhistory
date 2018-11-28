@@ -52,6 +52,10 @@ public class Login extends HttpServlet {
                         response.sendRedirect("/patient.jsp");
                         break;
                     }
+                    case "ADMIN": {
+                        response.sendRedirect("/admin.jsp");
+                        break;
+                    }
                     default: {
                         response.sendRedirect("/error.html");
                     }

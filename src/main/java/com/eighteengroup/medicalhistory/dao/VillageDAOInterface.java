@@ -5,14 +5,13 @@
  */
 package com.eighteengroup.medicalhistory.dao;
 
-import com.eighteengroup.medicalhistory.models.*;
+import com.eighteengroup.medicalhistory.models.Village;
 import java.util.ArrayList;
 
 /**
  *
- * @author quyet
+ * @author Admin
  */
-public interface UserDAOInterface {
-    User getUser(String username, String password);
-    ArrayList<User> getUser();
+public interface VillageDAOInterface {
+    ArrayList<Village> getVillageByDistrictId(String id);
 }

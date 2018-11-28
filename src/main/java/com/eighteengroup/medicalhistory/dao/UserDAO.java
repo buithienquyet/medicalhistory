@@ -5,6 +5,7 @@
  */
 package com.eighteengroup.medicalhistory.dao;
 
+import com.eighteengroup.medicalhistory.models.District;
 import com.eighteengroup.medicalhistory.models.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -70,5 +71,64 @@ public class UserDAO implements UserDAOInterface {
             System.out.println(ex.toString());
             return null;
         }
+    }
+     public ArrayList<User> getUser() {
+         try {
+            Connection con;
+            con = new DatabaseConnection().getConnection();
+            ResultSet resultSet = null;
+            PreparedStatement preparedStatement = null;
+            ArrayList<User> list = new ArrayList<>();
+            
+            String sql = "select * from tbl_user";
+            
+            preparedStatement = con.prepareStatement(sql);
+            
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) { 
+                User user=new User();
+                long id=resultSet.getLong("user_id");
+                String username=resultSet.getString("user_userName");
+                String birthday = resultSet.getString("user_birthday");
+                String address = resultSet.getString("user_address");
+                String phoneNumber = resultSet.getString("user_phoneNumber");
+                String createdDate  = resultSet.getString("user_createdDate");
+                String updatedDate = resultSet.getString("user_updatedDate");
+                String lastLogin = resultSet.getString("user_lastLogin");
+                String password = resultSet.getString("user_password");
+                String loginCount = resultSet.getString("user_loginCount");
+                String dbRoles = resultSet.getString("user_role");
+                ArrayList<String> roles = new ArrayList<String>();
+                for (String item : dbRoles.split(",")) {
+                    roles.add(item);
+                }
+                String firstname = resultSet.getString("user_firstname");
+                String lastname = resultSet.getString("user_lastname");
+                
+                user.setId(id);
+                user.setUserName(username);
+                user.setBirthday(birthday);
+                user.setAddress(address);
+                user.setPhoneNumber(phoneNumber);
+                user.setCreatedDate(createdDate);
+                user.setUpdatedDate(updatedDate);
+                user.setLastLogin(lastLogin);
+                user.setPassword(password);
+                user.setLastLogin(lastLogin);
+                user.setRoles(roles);
+                user.setFirstName(firstname);
+                user.setLastName(lastname);
+                
+                
+                //dis.setProvinceName(provinceName);
+                
+                list.add(user);
+            }
+            return list;
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

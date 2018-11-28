@@ -38,6 +38,17 @@ public class SecurityConfig {
         urlPatterns2.add("^/patient\\.jsp$");          
  
         mapConfig.put(ROLE_PATIENT, urlPatterns2);
+        
+        
+        List<String> urlPatterns3 = new ArrayList<String>();
+                
+//        urlPatterns2.add("/profile");
+//        urlPatterns2.add("/my-medical-histories");        
+        urlPatterns3.add("^/admin-user-list\\.jsp$");          
+ 
+        mapConfig.put(ROLE_ADMIN, urlPatterns3);
+        
+        
     }
  
     public static Set<String> getAllAppRoles() {
