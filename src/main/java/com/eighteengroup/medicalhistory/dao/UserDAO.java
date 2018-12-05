@@ -104,6 +104,11 @@ public class UserDAO implements UserDAOInterface {
                 String firstname = resultSet.getString("user_firstname");
                 String lastname = resultSet.getString("user_lastname");
                 int isUserDeleted = resultSet.getInt("user_isUserDeleted");
+                String proviceId = resultSet.getString("user_address_provinceId");
+                String districtId = resultSet.getString("user_address_districtId");
+                String villageId = resultSet.getString("user_address_village");
+                String homeNumber = resultSet.getString("user_address_homenumber");
+                
                 user.setId(id);
                 user.setUserName(username);
                 user.setBirthday(birthday);
@@ -118,6 +123,10 @@ public class UserDAO implements UserDAOInterface {
                 user.setFirstName(firstname);
                 user.setLastName(lastname);
                 user.setIsUserDeleted(isUserDeleted);
+                user.setProvinceId(proviceId);
+                user.setDistrictId(districtId);
+                user.setVillageId(villageId);
+                user.setHomeNumber(homeNumber);
 
                 //dis.setProvinceName(provinceName);
                 list.add(user);
@@ -164,6 +173,11 @@ public class UserDAO implements UserDAOInterface {
                 String firstname = resultSet.getString("user_firstname");
                 String lastname = resultSet.getString("user_lastname");
                 int isUserDeleted = resultSet.getInt("user_isUserDeleted");
+                String proviceId = resultSet.getString("user_address_provinceId");
+                String districtId = resultSet.getString("user_address_districtId");
+                String villageId = resultSet.getString("user_address_village");
+                String homeNumber = resultSet.getString("user_address_homenumber");
+                
                 user.setId(userId);
                 user.setUserName(username);
                 user.setBirthday(birthday);
@@ -178,6 +192,11 @@ public class UserDAO implements UserDAOInterface {
                 user.setFirstName(firstname);
                 user.setLastName(lastname);
                 user.setIsUserDeleted(isUserDeleted);
+                
+              user.setProvinceId(proviceId);
+                user.setDistrictId(districtId);
+                user.setVillageId(villageId);
+                user.setHomeNumber(homeNumber);
 
                 //dis.setProvinceName(provinceName);
                 return user;

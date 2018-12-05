@@ -150,7 +150,14 @@
                 $('#txtPathologicalProcess').val(regData.registationPathologicalprocess);
                 $('#txtReason').val(regData.registationReason);
                 $('#txtStory').val(regData.registationDiseaseprofile);
-
+                $('#selectProvince').val(regData.user.provinceId).trigger('change');
+            //    $('#selectDistrict').val(regData.user.districtId).trigger('change');
+                getDistrictList(regData.user.provinceId, regData.user.districtId);
+                getVillageList(regData.user.districtId, regData.user.villageId);
+            //    $('#selectVillage').val(regData.user.villageId).trigger('change');
+                $('#txtHomeNumber').val(regData.user.homeNumber);
+                $('#txtPhoneNumber').val(regData.user.phoneNumber);
+                $('#txtBirthDay').val(regData.user.birthday);
 
                 modal.modal('show');
             }
@@ -181,6 +188,7 @@
 
             function getList(date)
             {
+                $('.registration-list').empty();
                 $.ajax({
                     type: "GET",
                     url: "/registrations",
@@ -226,10 +234,10 @@
                     url: '/districts',
                     method: 'GET',
                     dataType: 'json',
-                    data : {
+                    data: {
                         provinceId: provinceId
                     },
-                    success: function (data) {                        
+                    success: function (data) {
                         $('#selectDistrict').empty();
 
                         for (let item of data)
@@ -239,20 +247,21 @@
                             option.html(item.DistrictName);
                             $('#selectDistrict').append(option);
                         }
+                        $('#selectDistrict').val(selected);
                     }
                 });
             }
-                        
+
             function getVillageList(districtId, selected)
             {
                 $.ajax({
                     url: '/villages',
                     method: 'GET',
                     dataType: 'json',
-                    data : {
-                        districtId:  districtId
+                    data: {
+                        districtId: districtId
                     },
-                    success: function (data) {                        
+                    success: function (data) {
                         $('#selectVillage').empty();
 
                         for (let item of data)
@@ -262,20 +271,21 @@
                             option.html(item.villageName);
                             $('#selectVillage').append(option);
                         }
+                        $('#selectVillage').val(selected);
                     }
                 });
             }
 
             $('#selectProvince').on('change', function () {
-                let val = this.value;               
-                
+                let val = this.value;
+
                 getDistrictList(val, null);
 
             });
-            
+
             $('#selectDistrict').on('change', function () {
-                let val = this.value;               
-                
+                let val = this.value;
+
                 getVillageList(val, null);
 
             });

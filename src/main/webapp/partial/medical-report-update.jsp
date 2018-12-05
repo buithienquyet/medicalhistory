@@ -75,7 +75,7 @@
                                         <div class="form-group" style="margin-bottom: 5px">
                                             <label></label>
                                             <span class="desc">- Số nhà</span>
-                                            <input class="form-control" type="text" placeholder="Số 1">
+                                            <input class="form-control" id="txtHomeNumber" type="text" placeholder="Số 1">
                                         </div>
                                     </div>
                                 </div>
@@ -91,12 +91,12 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="datepicker">
+                                        <input id="txtBirthDay" type="text" class="form-control pull-right" id="datepicker">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>4. Số điện thoại</label>
-                                    <input class="form-control" type="text" placeholder="0399876304">
+                                    <input id="txtPhoneNumber" class="form-control" type="text" placeholder="0399876304">
                                 </div>
                                 <div class="form-group">
                                     <label>6. Ngoại kiều</label>

@@ -86,14 +86,24 @@ public class RegistrationDAO implements RegistrationDAOInterface {
                 String createdDate = resultSet.getString("registration_createddate");
                 String updatedDate = resultSet.getString("registration_updateddate");
 
-                String user_birthday = resultSet.getString("user_birthday");
-                String user_firstname = resultSet.getString("user_firstname");
-                String user_lastname = resultSet.getString("user_lastname");
+//                String user_birthday = resultSet.getString("user_birthday");
+//                String user_firstname = resultSet.getString("user_firstname");
+//                String user_lastname = resultSet.getString("user_lastname");
+//                String user_proviceId = resultSet.getString("user_address_provinceId");
+//                String user_districtId = resultSet.getString("user_address_districtId");
+//                String user_villageId = resultSet.getString("user_address_village");
+//                String user_homeNumber = resultSet.getString("user_address_homenumber");
+//                String user_phoneNumber = resultSet.getString("user_phoneNumber");
 
-                User user = new User();
-                user.setBirthday(user_birthday);
-                user.setFirstName(user_firstname);
-                user.setLastName(user_lastname);
+                User user = new UserDAO().getUserById(Long.parseLong(resultSet.getString("registration_userId")));
+//                user.setBirthday(user_birthday);
+//                user.setFirstName(user_firstname);
+//                user.setLastName(user_lastname);
+//                user.setProvinceId(user_proviceId);
+//                user.setDistrictId(user_districtId);
+//                user.setVillageId(user_villageId);
+//                user.setHomeNumber(user_homeNumber);
+//                user.setPhoneNumber(user_phoneNumber);
                 //preparedStatement.setInt(1, id);
                 res.setUser(user);
                 res.setRegistationFaculty(faculty);
