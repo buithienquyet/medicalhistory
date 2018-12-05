@@ -16,7 +16,7 @@ public interface RegistrationDAOInterface {
 
     Registration getRegistrationById(int id);
     
-    ArrayList<Registration> getRegistrationsByDate();
+    ArrayList<Registration> getRegistrationsByDate(String date, long roomId);
 
     void insert(Registration reg);
 

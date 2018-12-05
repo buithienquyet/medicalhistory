@@ -12,7 +12,7 @@ import com.eighteengroup.medicalhistory.models.Doctor;
  * @author Admin
  */
 public interface DoctorDAOInterface {
-    Doctor getDoctorById(int id);
+    Doctor getDoctorByUserId(long id);
     void insert(Doctor doc);
     void delete(int id);
     void update(Doctor doc);

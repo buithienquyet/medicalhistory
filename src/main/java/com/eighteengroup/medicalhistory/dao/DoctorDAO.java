@@ -17,47 +17,55 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public class DoctorDAO {
+public class DoctorDAO implements DoctorDAOInterface {
 
-    public Doctor getDoctorById(int id) {
+    public Doctor getDoctorByUserId(long id) {
         try {
             Connection con;
             con = new DatabaseConnection().getConnection();
             ResultSet resultSet = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from tbl_doctor where doctor_id=?";
+            String sql = "SELECT * FROM tbl_user JOIN tbl_doctor ON tbl_user.user_id = tbl_doctor.user_id where tbl_user.user_id=?";
             preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setLong(1, id);
+
+            resultSet = preparedStatement.executeQuery();
             Doctor doc = new Doctor();
             while (resultSet.next()) {
-                String name = resultSet.getString("userName");
-                String address = resultSet.getString("address");
-                String birthday = resultSet.getString("birthday");
-                String phoneNumber = resultSet.getString("phoneNumber");
-                String createdDate = resultSet.getString("createdDate");
-                String updateDate = resultSet.getString("updatedDate");
+                String username = resultSet.getString("user_userName");
+                String birthday = resultSet.getString("user_birthday");
+                String address = resultSet.getString("user_address");
+                String phoneNumber = resultSet.getString("user_phoneNumber");
+                String createdDate = resultSet.getString("user_createdDate");
+                String updatedDate = resultSet.getString("user_updatedDate");
+                String lastLogin = resultSet.getString("user_lastLogin");
+                String password = resultSet.getString("user_password");
+                String firstName = resultSet.getString("user_firstname");
+                String lastName = resultSet.getString("user_lastname");
+
                 String jobTitle = resultSet.getString("doctor_jobTitle");
                 String faculty = resultSet.getString("doctor_faculty");
-                long loginCount = resultSet.getLong("loginCount");
-                String lastLogin = resultSet.getString("lastLogin");
-                String password = resultSet.getString("password");
+                long roomId = resultSet.getLong("room_id");
                 //String role = resultSet.getString("role");
 
                 ArrayList<String> roles = new ArrayList<String>();
-                roles.add(resultSet.getString("role"));
+                roles.add(resultSet.getString("user_role"));
                 doc.setRoles(roles);
 
-                preparedStatement.setLong(1, id);
-                doc.setUserName(name);
+                doc.setUserName(username);
                 doc.setAddress(address);
                 doc.setBirthday(birthday);
                 doc.setPhoneNumber(phoneNumber);
                 doc.setCreatedDate(createdDate);
-                doc.setUpdatedDate(updateDate);
+                doc.setUpdatedDate(updatedDate);
                 doc.setJobTitle(jobTitle);
                 doc.setFaculty(faculty);
-                doc.setLoginCount(loginCount);
                 doc.setLastLogin(lastLogin);
                 doc.setPassword(password);
+                doc.setRoomId(roomId);
+                doc.setFirstName(firstName);
+                doc.setLastName(lastName);
+
                 return doc;
             }
         } catch (Exception ex) {

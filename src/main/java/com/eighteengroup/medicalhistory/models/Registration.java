@@ -12,13 +12,31 @@ package com.eighteengroup.medicalhistory.models;
 public class Registration {
 
     private int registationId;
+    private User user;
     private String registationFaculty;
+    private long registationRoomId;
     private String registatioCreatedDate;
     private String registationUpdatedDate;
     private String registationReason;
     private String registationDate;
     private String registationPathologicalprocess;
     private String registationDiseaseprofile;
+
+    public long getRegistationRoomId() {
+        return registationRoomId;
+    }
+
+    public void setRegistationRoomId(long registationRoomId) {
+        this.registationRoomId = registationRoomId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getRegistationId() {
         return registationId;
@@ -84,5 +102,4 @@ public class Registration {
         this.registationDiseaseprofile = registationDiseaseprofile;
     }
 
-    
 }

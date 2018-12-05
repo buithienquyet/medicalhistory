@@ -46,16 +46,21 @@
                                         <div class="form-group">
                                             <label>1.  Khoa</label>
                                             <select class="form-control" id="txtFaculty" name="sltKhoa">
-                                                    <option>Thần kinh</option>
-                                                    <option>Khoa nội</option>
-                                                    <option>Tai, mũi, họng</option>
-                                                    <option>Mắt</option>
+                                                   
+                                            </select>
+                                        </div>
+                                    </div>
+                                       <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>2.  Phòng</label>
+                                            <select class="form-control" id="txtRoom" name="sltKhoa">
+                                                   
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>2.  Lý do vào viện</label>
+                                            <label>3.  Lý do vào viện</label>
 
                                             <input class="form-control" type="text" id="txtReason" name="txtLyDoVaoVien" placeholder="Đau lưng">
                                         </div>
@@ -64,7 +69,7 @@
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>3. Ngày tới khám</label>
+                                            <label>4. Ngày tới khám</label>
 
                                             <div class="input-group date">
                                                 <div class="input-group-addon">
@@ -79,7 +84,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>4. Quá trình bệnh lý</label>
+                                            <label>5. Quá trình bệnh lý</label>
                                             <span>(khởi phát, diễn biến, chẩn đoán, điều trị của tuyến dưới v.v...).</span>
                                             <textarea class="form-control" id="txtPathologicalProcess" rows="3" placeholder="Lâu năm ..."></textarea>
                                         </div>
@@ -87,7 +92,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>5. Tiểu sử bệnh</label>
+                                            <label>6. Tiểu sử bệnh</label>
                                             <textarea class="form-control" id="txtStory" rows="3" placeholder="Bản thân"></textarea>
                                         </div>
                                         <!-- /.form-group -->
@@ -144,7 +149,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
     <!-- Page script -->
-    <script src="/dist/js/registry.js"></script>
+    <script src="/dist/js/patient.js"></script>
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -188,7 +193,7 @@
             )
 
             //Date picker
-            $('#txtDate').datepicker({
+            $('#txtDate').datepicker({  format: 'yyyy/mm/dd',
                 autoclose: true
             })
 

@@ -5,15 +5,14 @@
  */
 package com.eighteengroup.medicalhistory.dao;
 
-import com.eighteengroup.medicalhistory.models.Province;
+import com.eighteengroup.medicalhistory.models.Room;
 import java.util.ArrayList;
 
 /**
  *
- * @author Admin
+ * @author quyet
  */
-public interface ProvinceDAOInterface {    
-
-    ArrayList<Province> getProvinces();
+public interface RoomDAOInterface {
+     ArrayList<Room> getRooms(long facultyId, String type);
     
 }

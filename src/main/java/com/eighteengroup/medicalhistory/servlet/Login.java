@@ -1,7 +1,10 @@
 package com.eighteengroup.medicalhistory.servlet;
 
+import com.eighteengroup.medicalhistory.dao.DoctorDAO;
+import com.eighteengroup.medicalhistory.dao.DoctorDAOInterface;
 import com.eighteengroup.medicalhistory.dao.UserDAO;
 import com.eighteengroup.medicalhistory.dao.UserDAOInterface;
+import com.eighteengroup.medicalhistory.models.Doctor;
 import com.eighteengroup.medicalhistory.models.User;
 import com.eighteengroup.medicalhistory.utils.AppUtils;
 import com.eighteengroup.medicalhistory.utils.MD5;
@@ -40,19 +43,25 @@ public class Login extends HttpServlet {
         if (user == null) {
             response.sendRedirect("/login.html");
         } else {
-            AppUtils.storeLoginedUser(request.getSession(), user);
             for (int i = 0; i < user.getRoles().size(); i++) {
                 switch (user.getRoles().get(i)) {
                     case "DOCTOR": {
+
+                        Doctor doctor;
+                        DoctorDAOInterface doctorDAO = new DoctorDAO();
+                        user = doctorDAO.getDoctorByUserId(user.getId());
+                        AppUtils.storeLoginedUser(request.getSession(), user);
                         response.sendRedirect("/doctor.jsp");
                         break;
                     }
 
                     case "PATIENT": {
+                        AppUtils.storeLoginedUser(request.getSession(), user);
                         response.sendRedirect("/patient.jsp");
                         break;
                     }
                     case "ADMIN": {
+                        AppUtils.storeLoginedUser(request.getSession(), user);
                         response.sendRedirect("/admin.jsp");
                         break;
                     }

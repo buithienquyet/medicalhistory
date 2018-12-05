@@ -15,4 +15,6 @@ import java.util.ArrayList;
 public interface UserDAOInterface {
     User getUser(String username, String password);
     ArrayList<User> getUser();
+    void insert(User user);
+    public User getUserById(long id);
 }

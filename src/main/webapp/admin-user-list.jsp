@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <%@include file="./partial/header.jsp"%>
+
+    <%@include file="./partial/header.jsp"%>        
 
     <body class="hold-transition skin-blue sidebar-mini">
+        <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
         <div class="wrapper">
             <%@include file="./partial/userinfo.jsp"%>
             <!-- Left side column. contains the logo and sidebar -->
@@ -27,52 +30,145 @@
                 <section class="content">
                     <div class="box box-default">
                         <div class="box-header with-border" style="padding-bottom: 0px;">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Ngày</label>
-                                        <span class="desc"> </span>
-                                        <input type="text" class="form-control pull-right" id="datepicker">
-                                    </div>
+                            <!--                            <div class="row">
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <label>Ngày</label>
+                                                                    <span class="desc"> </span>
+                                                                    <input type="text" class="form-control pull-right" id="datepicker">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <label>Trạng thái</label>
+                                                                    <span class="desc"> </span>
+                                                                    <select class="form-control">
+                                                                        <option>Đang đợi</option>
+                                                                        <option>Lỡ hẹn</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <label>Sắp xếp</label>
+                                                                    <span class="desc"> </span>
+                                                                    <select class="form-control">
+                                                                        <option>Tên bệnh nhân</option>
+                                                                        <option>Thời gian</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <label>&nbsp;</label>
+                                                                    <span class="desc"> </span>
+                                                                    <button class="btn btn-default form-control">Tìm kiếm</button>
+                                                                </div>
+                                                            </div>
+                            
+                                                        </div>-->
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <span class="desc"> </span>
+                                    <button id="btnAdd" class="btn btn-default form-control">Thêm tài khoản</button>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Trạng thái</label>
-                                        <span class="desc"> </span>
-                                        <select class="form-control">
-                                            <option>Đang đợi</option>
-                                            <option>Lỡ hẹn</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Sắp xếp</label>
-                                        <span class="desc"> </span>
-                                        <select class="form-control">
-                                            <option>Tên bệnh nhân</option>
-                                            <option>Thời gian</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>&nbsp;</label>
-                                        <span class="desc"> </span>
-                                        <button class="btn btn-default form-control">Tìm kiếm</button>
-                                    </div>
-                                </div>
-
                             </div>
 
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body registration-list">                           
-                            <table id ="tblUserList">
-                                
+                        <div class="box-body">                           
+                            <table id ="tblUserList" class = "table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tài khoản</th>
+                                        <th>Họ</th>
+                                        <th>Tên</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số điện thoại</th>                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.box-body -->
+                    </div>
+
+                    <div class="modal" id="modalAdd" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h3 class="modal-title">Thêm tài khoản</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>1.  Tài khoản</label>
+                                                <input class="form-control" type="text" id="txtUserName" name="" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>2.  Họ</label>
+                                                <input class="form-control" type="text" id="txtLastName" name="" placeholder="">
+                                            </div>
+                                            <!-- /.form-group -->
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>3.  Tên</label>
+                                                <input class="form-control" type="text" id="txtFirstName" name="" placeholder="">
+                                            </div>
+                                            <!-- /.form-group -->
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>4.  Địa chỉ</label>
+                                                <input class="form-control" type="text" id="txtAddress" name="" placeholder="">
+                                            </div>
+                                            <!-- /.form-group -->
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>5.  Số điện thoại</label>
+                                                <input class="form-control" type="text" id="txtPhoneNumber" name="" placeholder="">
+                                            </div>                                 
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>6. Vai trò</label>
+                                                <select class="form-control" id="txtRole" name="">
+                                                    <option value = "DOCTOR">Bác sĩ</option>
+                                                    <option value=\"PATIENT">Bệnh nhân</option>
+                                                    <option value="ADMIN">Quản trị</option>                                                   
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>7. Mật khẩu</label>
+                                                 <input class="form-control" type="password" id="txtPassword" name="" placeholder="" required>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>                              
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="btnAddUser" class="btn btn-primary">Thêm</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -89,18 +185,13 @@
         <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- Select2 -->
         <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-        <!-- InputMask -->
-        <script src="plugins/input-mask/jquery.inputmask.js"></script>
-        <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-        <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
         <!-- date-range-picker -->
         <script src="bower_components/moment/min/moment.min.js"></script>
         <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
         <!-- bootstrap datepicker -->
         <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <!-- bootstrap color picker -->
-        <script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-        <!-- bootstrap time picker -->
+        <!-- bootstrap color picker -->       
         <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
         <!-- SlimScroll -->
         <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -113,8 +204,11 @@
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- Page script -->
+        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
         <script>
+
             function showList(data)
             {
                 let str = '';
@@ -135,20 +229,74 @@
                 $('.registration-list').html(str);
             }
 
+            $('#tblUserList').DataTable({ajax: {
+                    type: 'GET',
+                    url: '/users',
+                    data: function (d)
+                    {
 
-            $.ajax({
-                type: "GET",
-                url: "/registrations",
-                dataType: 'json',
-                data: {},
-                success: function (data) {
-                    showList(data);
+                    },
+                    dataSrc: function (json) {
+                        return json;
+                    },
+                },
+                columns: [
+                    {data: 'userName'},
+                    {data: 'lastName'},
+                    {data: 'firstName'},
+                    {data: 'address'},
+                    {data: 'phoneNumber'},
+                ], language: {
+                    "sProcessing": "Đang xử lý...",
+                    "sLengthMenu": "Chọn số bản ghi hiển thị trên một trang _MENU_",
+                    "sZeroRecords": "Không có dữ liệu để hiển thị.",
+                    "sInfo": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ bản ghi",
+                    "sInfoEmpty": "Hiển thị từ 0 đến 0 trong tổng số 0 mục",
+                    "sInfoFiltered": "(được lọc từ _MAX_ bản ghi)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Tìm kiếm:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "Đầu",
+                        "sPrevious": "Trước",
+                        "sNext": "Tiếp",
+                        "sLast": "Cuối"
+                    }}});
 
-                },
-                error: function (error) {
-                    alert("khong thanh cong");
-                },
+            $('#btnAdd').click(function () {
+                $('#modalAdd').modal('show');
             });
+
+            $('#btnAddUser').click(function () {             
+                $.ajax({
+                    type: "POST",
+                    url: "/users",
+                    data: {userName: $('txtUserName').val(), firstName: $('txtFirstName').val(), lastName:  $('txtLastName').val(), address: $('txtAddress').val(), password: $('txtPassword').val(), phoneNumber : $('txtPhoneNumber').val() , role: $('#role').val()},
+                    success: function (msg) {
+
+                        if (msg == "ok") {
+                           alert('Thành công');
+                        }
+                    },
+                    error: function (error) {
+                        alert("Có lỗi");
+                    },
+                });
+            });
+
+//            $.ajax({
+//                type: "GET",
+//                url: "/registrations",
+//                dataType: 'json',
+//                data: {},
+//                success: function (data) {
+//                    showList(data);
+//
+//                },
+//                error: function (error) {
+//                    alert("khong thanh cong");
+//                },
+//            });
         </script>
 
     </body>

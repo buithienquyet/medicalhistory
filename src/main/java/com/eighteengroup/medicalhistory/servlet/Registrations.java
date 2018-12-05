@@ -18,64 +18,65 @@ import java.util.ArrayList;
 @WebServlet("/registrations")
 
 public class Registrations extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
+        String date = request.getParameter("date");
+        
+        Doctor doctor = (Doctor) AppUtils.getLoginedUser(request.getSession());
+        
         try (PrintWriter out = response.getWriter()) {
             
             RegistrationDAOInterface registrationDAO = new RegistrationDAO();
-            ArrayList<Registration> list = registrationDAO.getRegistrationsByDate();
-            Gson gson = new Gson();                                    
+            ArrayList<Registration> list = registrationDAO.getRegistrationsByDate(date, doctor.getRoomId());
+            Gson gson = new Gson();            
             
-            out.println(gson.toJson(list));          
+            out.println(gson.toJson(list));            
             out.close();
         }
     }
-
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
-         String message ="";
+        String message = "";
         try {
-           String currentDate = AppUtils.getCurrentDate();
-        String faculty = request.getParameter("faculty");
-        System.out.println(faculty);
-        String reason = request.getParameter("reason");
-        System.out.println(reason);
-        String date = request.getParameter("date");
-        System.out.println(date);
-        String pathologicalProcess = request.getParameter("pathologicalProcess");
-        System.out.println(pathologicalProcess);
-        String story = request.getParameter("story");
-        System.out.println(story);
+            String currentDate = AppUtils.getCurrentDate();
+            String faculty = request.getParameter("faculty");          
+            String reason = request.getParameter("reason");         
+            String date = request.getParameter("date");         
+            String pathologicalProcess = request.getParameter("pathologicalProcess");          
+            String story = request.getParameter("story");     
+            long roomId = Long.parseLong(request.getParameter("roomId"));
 
-        //tao doi tuong
-        RegistrationDAO registrationDAO = new RegistrationDAO();
-        Registration registration=new Registration();
-        registration.setRegistationFaculty(faculty);
-        registration.setRegistationReason(reason);
-        registration.setRegistationDate(date);
-        registration.setRegistationPathologicalprocess(pathologicalProcess);
-        registration.setRegistationDiseaseprofile(story);
-        registration.setRegistatioCreatedDate(currentDate);
-        registration.setRegistationUpdatedDate(currentDate);
-        registrationDAO.insert(registration);
-        message ="ok";
-        System.out.println("Đăng ký thành công");
+            //tao doi tuong
+            RegistrationDAO registrationDAO = new RegistrationDAO();
+            Registration registration = new Registration();
+            
+            registration.setUser(AppUtils.getLoginedUser(request.getSession()));
+            System.out.println(registration.getUser().getId());
+            registration.setRegistationFaculty(faculty);
+            registration.setRegistationReason(reason);
+            registration.setRegistationDate(date);
+            registration.setRegistationPathologicalprocess(pathologicalProcess);
+            registration.setRegistationDiseaseprofile(story);
+            registration.setRegistatioCreatedDate(currentDate);
+            registration.setRegistationUpdatedDate(currentDate);
+            registration.setRegistationRoomId(roomId);
+            registrationDAO.insert(registration);
+            message = "ok";
+            System.out.println("Đăng ký thành công");
         } catch (Exception e) {
-            message ="error";
+            message = "error";
         }
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.print(message);           
+            out.print(message);            
             out.close();
         }
-        
-        
-        // tao RegDAO
 
+        // tao RegDAO
     }
 }

@@ -10,6 +10,15 @@ import java.util.ArrayList;
 public class Doctor extends User {  
     private String jobTitle; //chức vụ
     private String faculty; //khoa  
+    private long roomId;
+
+    public long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(long roomId) {
+        this.roomId = roomId;
+    }
 
     public String getJobTitle() {
         return jobTitle;
@@ -25,9 +34,7 @@ public class Doctor extends User {
 
     public void setFaculty(String faculty) {
         this.faculty = faculty;
-    }
-
-    
+    }    
     
 }
 
